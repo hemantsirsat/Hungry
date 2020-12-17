@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react/cjs/react.development';
 import Edamam from '../Api/Edamam';
 
 export default () =>{
-    const [Result, setResult] = useState('');
+    const [Result, setResult] = useState([]);
     const [ErrorMessage, setErrorMessage] = useState('');
 
-    const FetchShows = async ({ myRecipe }) =>{
+    const FetchRecipe = async ( myRecipe ) =>{
         try{
             const response = await Edamam.get('/search',{
                 params:{
@@ -22,9 +23,5 @@ export default () =>{
         }
     };
 
-    useEffect(()=>{
-        FetchShows("Breaking Bad");
-    },[])
-
-    return [FetchShows, Result, ErrorMessage];
+    return [FetchRecipe, Result, ErrorMessage];
 }

@@ -1,11 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { useEffect } from 'react/cjs/react.development';
+import { useEffect } from 'react';
 import useShows from '../Hook/useShows';
 
 const HomeScreen =() =>{
-    // const [FetchShows, Result, ErrorMessage] = useShows();
-    
+    const [FetchRecipe, Result, ErrorMessage] = useShows();
+
+    // useEffect(()=>{
+    //     FetchRecipe('cheese pizza');
+    // },[])
+    // console.log(Result);
+
     return(
         <View>
             <Text>Home Screen</Text>
