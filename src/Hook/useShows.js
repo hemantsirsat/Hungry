@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Edamam from '../Api/Edamam';
 
 export default () =>{
@@ -20,6 +20,9 @@ export default () =>{
             setErrorMessage("Something Went Wrong! Retry");
         }
     };
+    useEffect(()=>{
+        FetchRecipe('indian');
+    },[]);
 
     return [FetchRecipe, Result, ErrorMessage];
 }
