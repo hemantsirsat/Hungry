@@ -12,6 +12,7 @@ export default () =>{
                     q:myRecipe,
                     app_id:'a12f52f6',
                     app_key:'213b11b94f0dd9e10128114b44ada03a',
+                    to:'20'
                 }
             });
             setResult(response.data.hits);
@@ -20,9 +21,5 @@ export default () =>{
             setErrorMessage("Something Went Wrong! Retry");
         }
     };
-    useEffect(()=>{
-        FetchRecipe('indian');
-    },[]);
-
     return [FetchRecipe, Result, ErrorMessage];
 }

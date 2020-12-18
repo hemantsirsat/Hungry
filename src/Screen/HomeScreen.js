@@ -1,51 +1,30 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import useShows from '../Hook/useShows';
-import RecipeCard from '../Component/RecipeCard';
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
-import { useReducer } from 'react';
+import Indian from '../Component/Indian';
+import Italian from '../Component/Italian';
+import Vegan from '../Component/Vegan';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const HomeScreen =() =>{
-    const [FetchRecipe, Result, ErrorMessage] = useShows();
-
-    if(!Result){
-        return null;
-    }
-
     return(
-        <View style={styles.viewStyle}>
-            <StatusBar style='auto' />
-            <Text style={styles.categoryStyle}>Indian</Text>
-            <FlatList
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                data={Result}
-                keyExtractor={(item)=>item.recipe.uri}
-                renderItem={({ item }) => {
-                    return (
-                        <TouchableOpacity>
-                            <RecipeCard 
-                                DishImage={item.recipe.image}
-                                DishName={item.recipe.label}
-                            />
-                        </TouchableOpacity>
-                    )
-                }}
-            />
+        <View>
+            <ScrollView>
+                <StatusBar style='auto' />
+                <Indian 
+                    category="Indian"
+                />
+                <Italian 
+                    category="Italian"
+                />
+                <Vegan
+                    category="Vegan"
+                />
+            </ScrollView>
         </View>
     );
 };
 
-const styles = StyleSheet.create({
-    viewStyle:{
-        marginTop:20,
-    },
-    categoryStyle:{
-        fontSize:25,
-        fontWeight:'bold',
-        paddingLeft:10
-    }
-});
+
 
 export default HomeScreen;
