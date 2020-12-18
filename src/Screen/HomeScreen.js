@@ -6,14 +6,17 @@ import useShows from '../Hook/useShows';
 const HomeScreen =() =>{
     const [FetchRecipe, Result, ErrorMessage] = useShows();
 
-    // useEffect(()=>{
-    //     FetchRecipe('cheese pizza');
-    // },[])
-    // console.log(Result);
-
+    useEffect(()=>{
+        FetchRecipe('pasta');
+    },[]);
+    console.log(Result);
+       
     return(
         <View>
             <Text>Home Screen</Text>
+            {Result.map((myDish)=>{
+                return <Text>{myDish.recipe.label}</Text>
+            })}
         </View>
     );
 };

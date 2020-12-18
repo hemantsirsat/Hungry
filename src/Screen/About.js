@@ -18,12 +18,15 @@ const styles = StyleSheet.create({
     viewStyle:{
         flex:1,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        
     },
     headerStyle:{
         fontWeight:'bold',
         fontSize:20,
-        fontFamily:'sans-serif'
+        fontFamily:'sans-serif',
+        marginHorizontal:20,
+        textAlign:'center'
     },
     descriptionStyle:{
         marginHorizontal:50,
@@ -34,6 +37,8 @@ const styles = StyleSheet.create({
     thankStyle:{
         fontSize:10,
         fontStyle:'italic',
+        marginHorizontal:20,
+        textAlign:'center'
     }
 });
 
