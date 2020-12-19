@@ -17,7 +17,7 @@ const SearchBar = ({ navigation }) => {
                     value={myRecipe}
                     onChangeText={term => setmyRecipe(term)}
                     onEndEditing={()=>{
-                        navigation.navigate('Recipe');
+                        navigation.navigate('Recipe',{term});
                     }}
                 />
             </View>

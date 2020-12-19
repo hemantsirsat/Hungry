@@ -25,7 +25,7 @@ const Healthy = ({category, destination}) =>{
                 renderItem={({ item }) => {
                     return (
                         <TouchableOpacity
-                            onPress={()=>{destination.navigate('Recipe')}}
+                            onPress={()=>{destination.navigate('Recipe',{item})}}
                         >
                             <RecipeCard 
                                 DishImage={item.recipe.image}
