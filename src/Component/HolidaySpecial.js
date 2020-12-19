@@ -4,13 +4,12 @@ import useRecipe from '../Hook/useRecipe';
 import RecipeCard from './RecipeCard';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
-const HolidaySpecial = ({ category }) =>{
+const HolidaySpecial = ({ category, destination }) =>{
     const [FetchRecipe, Result, ErrorMessage] = useRecipe();
 
     useEffect(()=>{
         FetchRecipe(category);
     },[]);
-
     if(!Result){
         return null;
     }
@@ -25,7 +24,9 @@ const HolidaySpecial = ({ category }) =>{
                 keyExtractor={(item)=>item.recipe.uri}
                 renderItem={({ item }) => {
                     return (
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={()=>{destination.navigate('Recipe')}}
+                        >
                             <RecipeCard 
                                 DishImage={item.recipe.image}
                                 DishName={item.recipe.label}

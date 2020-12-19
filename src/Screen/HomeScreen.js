@@ -1,7 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView } from 'react-native-gesture-handler';
+import StickyParallaxHeader from 'react-native-sticky-parallax-header'
 import SearchBar from '../Component/SearchBar';
 import Quick from '../Component/Quick';
 import Healthy from '../Component/Healthy';
@@ -12,41 +13,58 @@ import Snacks from '../Component/Snacks';
 import Dinner from '../Component/Dinner';
 import Desert from '../Component/Desert';
 
-const HomeScreen =() =>{
+const HomeScreen =({ navigation }) =>{
     return(
-        <View>
+        <>
             <SearchBar />
             <ScrollView>
                 <StatusBar style='auto' />
                 <Quick 
                     category="Quick"
+                    destination={navigation}
                 />
                 <Healthy
                     category="Healthy"
+                    destination={navigation}
+
                 />
                 <HolidaySpecial
                     category="Holiday"
+                    destination={navigation}
+
                 />
                 <Breakfast
                     category="Breakfast"
+                    destination={navigation}
+
                 />
                 <Lunch
                     category="Lunch"
+                    destination={navigation}
+
                 />
                 <Snacks
                     category="Snacks"
+                    destination={navigation}
+
                 />
                 <Dinner
                     category="Dinner"
+                    destination={navigation}
+
                 />
                 <Desert
                     category="Desert"
+                    destination={navigation}
+
                 />
             </ScrollView>
-        </View>
+        </>
     );
 };
 
-
+const styles = StyleSheet.create({
+    scrollStyle:{}
+});
 
 export default HomeScreen;

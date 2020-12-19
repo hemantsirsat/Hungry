@@ -4,13 +4,12 @@ import useRecipe2 from '../Hook/useRecipe2';
 import RecipeCard from './RecipeCard';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
-const Desert = ({ category }) =>{
+const Desert = ({ category, destination }) =>{
     const [FetchRecipe, Result, ErrorMessage] = useRecipe2();
 
     useEffect(()=>{
         FetchRecipe(category);
     },[]);
-
     if(!Result){
         return null;
     }
@@ -25,7 +24,9 @@ const Desert = ({ category }) =>{
                 keyExtractor={(item)=>item.recipe.uri}
                 renderItem={({ item }) => {
                     return (
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={()=>{destination.navigate('Recipe')}}
+                        >
                             <RecipeCard 
                                 DishImage={item.recipe.image}
                                 DishName={item.recipe.label}

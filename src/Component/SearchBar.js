@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TextInput, Text, View, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
     const [myRecipe, setmyRecipe] = useState('');
     return(
         <View style={styles.viewStyle}>
@@ -31,13 +31,13 @@ const styles = StyleSheet.create({
     },
     cravingStyle:{
         fontSize:24,
-        marginVertical:10,
+        marginTop:20,
         marginHorizontal:15
     },
     barStyle:{
         flexDirection:'row',
         backgroundColor:'#dee2e6',
-        marginHorizontal:20,
+        marginHorizontal:15,
         borderRadius:10,
         marginVertical:15,
     },
