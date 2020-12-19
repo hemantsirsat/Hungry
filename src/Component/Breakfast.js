@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import useShows from '../Hook/useShows';
-import RecipeCard from '../Component/RecipeCard';
+import useRecipe2 from '../Hook/useRecipe2';
+import RecipeCard from './RecipeCard';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
-const Indian = ({category}) =>{
-    const [FetchRecipe, Result, ErrorMessage] = useShows();
+const Breakfast = ({ category }) =>{
+    const [FetchRecipe, Result, ErrorMessage] = useRecipe2();
+
     useEffect(()=>{
         FetchRecipe(category);
     },[]);
+
     if(!Result){
         return null;
     }
+
     return(
         <View style={styles.viewStyle}>
             <Text style={styles.categoryStyle}>{category}</Text>
@@ -37,13 +40,15 @@ const Indian = ({category}) =>{
 
 const styles = StyleSheet.create({
     viewStyle:{
-        marginTop:20,
-    },
+        marginVertical:5
+    },  
     categoryStyle:{
         fontSize:25,
         fontWeight:'bold',
-        paddingLeft:10
+        paddingLeft:15,
+        paddingVertical:18,
+        fontSize:20
     }
 });
 
-export default Indian;
+export default Breakfast;

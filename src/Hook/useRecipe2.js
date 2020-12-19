@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Edamam from '../Api/Edamam';
 
 export default () =>{
@@ -10,8 +10,8 @@ export default () =>{
             const response = await Edamam.get('/search',{
                 params:{
                     q:myRecipe,
-                    app_id:'a12f52f6',
-                    app_key:'213b11b94f0dd9e10128114b44ada03a',
+                    app_id:'9bf554ef',
+                    app_key:'4e8dbbdce63504939827457b135b6a14',
                     to:'20'
                 }
             });

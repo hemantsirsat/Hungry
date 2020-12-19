@@ -9,25 +9,29 @@ const RecipeCard = ({ DishImage, DishName }) => {
                 source={{uri:ImageUri}}
                 style={styles.imageStyle}
             />
-            <Text style={styles.dishStyle}>{DishName}</Text>
+            <Text numberOfLines={1} style={styles.dishStyle}>{DishName}</Text>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     viewStyle:{
+        paddingLeft:10,
         marginHorizontal:5,
     },  
     imageStyle:{
-        width:200,
-        height:120,
-        borderRadius:10
+        width:310,
+        height:180,
+        borderRadius:15
     },
     dishStyle:{
         textAlign:'left',
         fontSize:19,
-        width:180,
-        padding:5
+        width:300,
+        marginVertical:10,
+        fontWeight:'bold',
+        fontSize:17,
+        fontFamily:'sans-serif-thin'
         
     }
 });

@@ -3,7 +3,7 @@ import React from 'react';
 import { NavigationContainer} from '@react-navigation/native'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import HomeScreen from './src/Screen/HomeScreen';
-import Trending from './src/Screen/Trending';
+import ShoppingList from './src/Screen/ShoppingList';
 import About from './src/Screen/About';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Ionicons, Feather } from '@expo/vector-icons';
@@ -31,12 +31,12 @@ function MyTabs() {
         />
         <Tab.Screen 
           name="Settings" 
-          component={Trending} 
+          component={ShoppingList} 
           options={{
-            tabBarLabel: 'Search',
+            tabBarLabel: 'Shop',
             tabBarColor:"#62b6cb",
             tabBarIcon: ({ color }) => (
-              <Ionicons name="search" size={24} color={color} />
+              <Ionicons name="md-list-circle-outline" size={24} color={color} />
             )
           }} 
         />

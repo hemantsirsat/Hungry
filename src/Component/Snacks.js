@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import useShows from '../Hook/useShows';
-import RecipeCard from '../Component/RecipeCard';
+import useRecipe from '../Hook/useRecipe';
+import RecipeCard from './RecipeCard';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
-const Vegan = ({category}) =>{
-    const [FetchRecipe, Result, ErrorMessage] = useShows();
+const Snacks = ({category}) =>{
+    const [FetchRecipe, Result, ErrorMessage] = useRecipe();
     useEffect(()=>{
         FetchRecipe(category);
     },[]);
@@ -37,13 +37,15 @@ const Vegan = ({category}) =>{
 
 const styles = StyleSheet.create({
     viewStyle:{
-        marginTop:20,
+        marginVertical:5
     },
     categoryStyle:{
         fontSize:25,
         fontWeight:'bold',
-        paddingLeft:10
+        paddingLeft:15,
+        paddingVertical:18,
+        fontSize:20
     }
 });
 
-export default Vegan;
+export default Snacks;

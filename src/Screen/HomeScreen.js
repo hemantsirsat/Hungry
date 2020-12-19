@@ -1,24 +1,46 @@
 import React from 'react';
 import { View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import Indian from '../Component/Indian';
-import Italian from '../Component/Italian';
-import Vegan from '../Component/Vegan';
 import { ScrollView } from 'react-native-gesture-handler';
+import SearchBar from '../Component/SearchBar';
+import Quick from '../Component/Quick';
+import Healthy from '../Component/Healthy';
+import HolidaySpecial from '../Component/HolidaySpecial';
+import Breakfast from '../Component/Breakfast';
+import Lunch from '../Component/Lunch';
+import Snacks from '../Component/Snacks';
+import Dinner from '../Component/Dinner';
+import Desert from '../Component/Desert';
 
 const HomeScreen =() =>{
     return(
         <View>
+            <SearchBar />
             <ScrollView>
                 <StatusBar style='auto' />
-                <Indian 
-                    category="Indian"
+                <Quick 
+                    category="Quick"
                 />
-                <Italian 
-                    category="Italian"
+                <Healthy
+                    category="Healthy"
                 />
-                <Vegan
-                    category="Vegan"
+                <HolidaySpecial
+                    category="Holiday"
+                />
+                <Breakfast
+                    category="Breakfast"
+                />
+                <Lunch
+                    category="Lunch"
+                />
+                <Snacks
+                    category="Snacks"
+                />
+                <Dinner
+                    category="Dinner"
+                />
+                <Desert
+                    category="Desert"
                 />
             </ScrollView>
         </View>
