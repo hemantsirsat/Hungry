@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TextInput, Text, View, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-const SearchBar = (props) => {
+const SearchBar = ({ navigation }) => {
     const [myRecipe, setmyRecipe] = useState('');
     return(
         <View style={styles.viewStyle}>
@@ -17,7 +17,7 @@ const SearchBar = (props) => {
                     value={myRecipe}
                     onChangeText={term => setmyRecipe(term)}
                     onEndEditing={()=>{
-                        console.log(myRecipe);
+                        navigation.navigate('Recipe');
                     }}
                 />
             </View>

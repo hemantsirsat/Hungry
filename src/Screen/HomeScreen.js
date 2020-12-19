@@ -16,7 +16,9 @@ import Desert from '../Component/Desert';
 const HomeScreen =({ navigation }) =>{
     return(
         <>
-            <SearchBar />
+            <SearchBar 
+                navigation={navigation}
+            />
             <ScrollView>
                 <StatusBar style='auto' />
                 <Quick 
