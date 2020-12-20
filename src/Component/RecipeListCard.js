@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const RecipeListCard = ({dish, navigation}) => {
-    console.log(navigation);
     const imageURI = dish.item.recipe.image;
     const totalTime = dish.item.recipe.totalTime;
     return (

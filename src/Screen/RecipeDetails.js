@@ -6,8 +6,11 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 const RecipeDetails = ({ route }) => {
     let recipeDetails='';
-    {!route.params.item.recipe ? recipeDetails=route.params.item.item.recipe: recipeDetails=route.params.item.recipe }
-    console.log(route);
+    {!route.params.item.recipe ? 
+        recipeDetails=route.params.item.item.recipe
+        : 
+        recipeDetails=route.params.item.recipe 
+    }
     const imageURL = recipeDetails.image;
     const ingredients = recipeDetails.ingredientLines;
     const healthlabel = recipeDetails.healthLabels;
