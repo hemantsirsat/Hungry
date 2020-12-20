@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import useRecipe2 from '../Hook/useRecipe2';
+import useMealType from '../Hook/useMealType';
 import RecipeCard from './RecipeCard';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
 const Dinner = ({category, destination}) =>{
-    const [FetchRecipe, Result, ErrorMessage] = useRecipe2();
+    const [FetchRecipe, Meal, ErrorMessage] = useMealType();
 
     useEffect(()=>{
         FetchRecipe(category);
     },[]);
-    if(!Result){
+    if(!Meal){
         return null;
     }
     
@@ -20,7 +20,7 @@ const Dinner = ({category, destination}) =>{
             <FlatList
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                data={Result}
+                data={Meal}
                 keyExtractor={(item)=>item.recipe.uri}
                 renderItem={({ item }) => {
                     return (

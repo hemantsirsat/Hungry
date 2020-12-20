@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import useRecipe from '../Hook/useRecipe';
+import useRecipe2 from '../Hook/useRecipe2';
 import RecipeCard from './RecipeCard';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
 const HolidaySpecial = ({ category, destination }) =>{
-    const [FetchRecipe, Result, ErrorMessage] = useRecipe();
+    const [FetchRecipe, Result, ErrorMessage] = useRecipe2();
 
     useEffect(()=>{
         FetchRecipe(category);

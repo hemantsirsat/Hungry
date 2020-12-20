@@ -31,7 +31,11 @@ const RecipeDetails = ({ route, navigation }) => {
                             <Text style={styles.unitStyle}>g</Text>    
                         </Text>
                         <Text style={styles.innerinshortStyle}>
-                            <Text>{totalTime}{"\n"} </Text>
+                            {parseFloat(totalTime)===0.00?
+                                    <Text>N/A{"\n"}</Text> 
+                                :
+                                    <Text>{totalTime}{"\n"} </Text>
+                            }
                             <Text style={styles.unitStyle}>min</Text>
                         </Text>
                     </View>
