@@ -17,7 +17,7 @@ const RecipeList = ({route, navigation}) => {
     return (
         <View>
             <FlatList
-                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
                 data={searchResult}
                 keyExtractor={(item)=>item.recipe.uri}
                 renderItem={(item)=>{

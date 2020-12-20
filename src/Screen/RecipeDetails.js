@@ -4,7 +4,7 @@ import { Text, View, Image, StyleSheet } from 'react-native';
 import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const RecipeDetails = ({ route }) => {
+const RecipeDetails = ({ route, navigation }) => {
     let recipeDetails='';
     {!route.params.item.recipe ? 
         recipeDetails=route.params.item.item.recipe
@@ -21,7 +21,7 @@ const RecipeDetails = ({ route }) => {
     return(
         <View style={{flex:1}}>
             <StatusBar style="auto" />
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <Image source={{uri:imageURL}} style={styles.headerimageStyle}/>
                 <View style={styles.contentStyle}>
                     <Text style={styles.labelStyle}>{recipeDetails.label}</Text>

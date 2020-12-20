@@ -18,7 +18,7 @@ const RecipeListCard = ({dish, navigation}) => {
                         style={styles.imageStyle}
                     />
                     <View style={styles.detailStyle}>
-                        <Text style={styles.dishNameStyle}>{dish.item.recipe.label}</Text>
+                        <Text style={styles.dishNameStyle} numberOfLines={1}>{dish.item.recipe.label}</Text>
                         {parseInt(totalTime) === 0 ?
                             <Text style={styles.timeStyle}>N/A Minutes</Text>
                             :
@@ -33,13 +33,13 @@ const RecipeListCard = ({dish, navigation}) => {
 
 const styles = StyleSheet.create({
     viewStyle:{
-        marginHorizontal:15,
         marginTop:25,
     },
     dishDetailStyle:{
         flexDirection:'row',
         backgroundColor:'#f8f9fa',
         borderRadius:10,
+        marginHorizontal:15
     },
     imageStyle:{
         width:100,
@@ -49,13 +49,13 @@ const styles = StyleSheet.create({
     },
     detailStyle:{
         marginHorizontal:15,
-        
+        height:100
     },
     dishNameStyle:{
-        fontSize:22,
+        fontSize:20,
         fontWeight:'bold',
         marginTop:10,
-        paddingHorizontal:10,
+        paddingRight:100
     },
     timeStyle:{
         marginVertical:10,
