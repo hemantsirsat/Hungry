@@ -1,14 +1,15 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image, StyleSheet } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const RecipeDetails = ({ route }) => {
+const RecipeDetails = ({ route, navigation }) => {
     const recipeDetails = route.params.item.recipe
 
     const imageURL = recipeDetails.image;
     const ingredients = recipeDetails.ingredientLines;
+    const healthlabel = recipeDetails.healthLabels;
     const calories = parseFloat(recipeDetails.calories).toFixed(2);
     const totalWeight = parseFloat(recipeDetails.totalWeight).toFixed(2);
     const totalTime = parseFloat(recipeDetails.totalTime).toFixed(2);
@@ -25,6 +26,20 @@ const RecipeDetails = ({ route }) => {
                         <Text style={styles.innerinshortStyle}>{totalWeight}{"\n"} g</Text>
                         <Text style={styles.innerinshortStyle}>{totalTime}{"\n"} min</Text>
                     </View>
+                    <View style={{paddingRight:5}}>
+                        <Text style={styles.healthheaderStyle}>Health Labels</Text>
+                        <FlatList
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                            data={healthlabel}
+                            keyExtractor={(item)=>item}
+                            renderItem={({item})=>{
+                                return(
+                                    <Text style={styles.healthlabelStyle}>{item}</Text>
+                                )
+                            }}    
+                        />
+                    </View>
                     <View style={styles.ingredientHeadingStyle}>
                         <MaterialIcons name="list-alt" size={22} color="black" />
                         <Text style={styles.textStyle}>
@@ -35,6 +50,12 @@ const RecipeDetails = ({ route }) => {
                         <Text style={styles.ingredientStyle}>{items}</Text>
                     )}
                 </View>
+                <TouchableOpacity
+                    style={styles.knowMoreStyle}
+                    onPress={()=>navigation.navigate('InDetail',{website:recipeDetails.url})}
+                >
+                    <Text style={styles.tapStyle}>Tap Here To Know More!</Text>
+                </TouchableOpacity>
             </ScrollView>
         </View>
     );
@@ -46,20 +67,23 @@ const styles = StyleSheet.create({
         height:500,
     },
     contentStyle:{
-        marginHorizontal:15,
         marginBottom:10
     },  
     labelStyle:{
         fontSize:24,
         fontWeight:'bold',
         marginTop:20,
-        textAlign:'left'
+        textAlign:'left',
+        marginHorizontal:15,
+
     },  
     inshortStyle:{
         flexDirection:'row',
         height:60,
         justifyContent:'center',
-        marginVertical:15
+        marginVertical:15,
+        marginHorizontal:15,
+
     },
     innerinshortStyle:{
         alignSelf:'center',
@@ -67,18 +91,48 @@ const styles = StyleSheet.create({
         textAlign:'center',
         fontSize:15,
     },
+    healthheaderStyle:{
+        fontSize:22,
+        paddingLeft:15,
+        fontWeight:'bold'
+    },
+    healthlabelStyle:{
+        marginHorizontal:15,
+        height:30,
+        backgroundColor:'#dee2e6',
+        borderRadius:10,
+        padding:7,
+        marginVertical:10
+
+    },
     ingredientHeadingStyle:{
         flexDirection:'row',
         marginVertical:10,
+        marginHorizontal:15,
+
+    },
+    ingredientStyle:{
+        marginVertical:6,
+        fontSize:17,
+        marginHorizontal:15,
+
     },
     textStyle:{
         fontSize:22,
         fontWeight:'bold',
         paddingLeft:7,
     },
-    ingredientStyle:{
-        marginVertical:6,
-        fontSize:17
+    knowMoreStyle:{
+        bottom:0,
+        height:40,
+        justifyContent:'center',
+        backgroundColor:'#000',
+    },
+    tapStyle:{
+        color:'#fff',
+        alignSelf:'center',
+        fontWeight:'bold',
+        fontSize:15
     }
 });
 
