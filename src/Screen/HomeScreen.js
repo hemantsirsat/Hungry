@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView } from 'react-native-gesture-handler';
-import StickyParallaxHeader from 'react-native-sticky-parallax-header'
 import SearchBar from '../Component/SearchBar';
 import Quick from '../Component/Quick';
 import Healthy from '../Component/Healthy';
@@ -20,7 +19,7 @@ const HomeScreen =({ navigation }) =>{
                 navigation={navigation}
             />
             <ScrollView>
-                <StatusBar style='auto' />
+                <StatusBar style='auto' translucent={true}/>
                 <Quick 
                     category="Quick"
                     destination={navigation}

@@ -4,9 +4,10 @@ import { Text, View, Image, StyleSheet } from 'react-native';
 import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const RecipeDetails = ({ route, navigation }) => {
-    const recipeDetails = route.params.item.recipe
-
+const RecipeDetails = ({ route }) => {
+    let recipeDetails='';
+    {!route.params.item.recipe ? recipeDetails=route.params.item.item.recipe: recipeDetails=route.params.item.recipe }
+    console.log(route);
     const imageURL = recipeDetails.image;
     const ingredients = recipeDetails.ingredientLines;
     const healthlabel = recipeDetails.healthLabels;
@@ -31,7 +32,7 @@ const RecipeDetails = ({ route, navigation }) => {
                             <Text style={styles.unitStyle}>g</Text>    
                         </Text>
                         <Text style={styles.innerinshortStyle}>
-                            {parseFloat(totalTime)===0.00?
+                            { parseFloat(totalTime)===0.00 ?
                                     <Text>N/A{"\n"}</Text> 
                                 :
                                     <Text>{totalTime}{"\n"} </Text>
@@ -114,10 +115,9 @@ const styles = StyleSheet.create({
     },
     healthlabelStyle:{
         marginHorizontal:15,
-        height:30,
         backgroundColor:'#dee2e6',
         borderRadius:10,
-        padding:7,
+        padding:10,
         marginVertical:10
 
     },
