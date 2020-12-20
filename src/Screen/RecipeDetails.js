@@ -22,9 +22,18 @@ const RecipeDetails = ({ route, navigation }) => {
                 <View style={styles.contentStyle}>
                     <Text style={styles.labelStyle}>{recipeDetails.label}</Text>
                     <View style={styles.inshortStyle}>
-                        <Text style={styles.innerinshortStyle}>{calories}{"\n"} Kcal</Text>
-                        <Text style={styles.innerinshortStyle}>{totalWeight}{"\n"} g</Text>
-                        <Text style={styles.innerinshortStyle}>{totalTime}{"\n"} min</Text>
+                        <Text style={styles.innerinshortStyle}>
+                            <Text>{calories}{"\n"}</Text> 
+                            <Text style={styles.unitStyle}>Kcal</Text>
+                        </Text>
+                        <Text style={styles.innerinshortStyle}>
+                            <Text>{totalWeight}{"\n"}</Text> 
+                            <Text style={styles.unitStyle}>g</Text>    
+                        </Text>
+                        <Text style={styles.innerinshortStyle}>
+                            <Text>{totalTime}{"\n"} </Text>
+                            <Text style={styles.unitStyle}>min</Text>
+                        </Text>
                     </View>
                     <View style={{paddingRight:5}}>
                         <Text style={styles.healthheaderStyle}>Health Labels</Text>
@@ -90,6 +99,9 @@ const styles = StyleSheet.create({
         marginHorizontal:30,
         textAlign:'center',
         fontSize:15,
+    },
+    unitStyle:{
+        fontWeight:'bold'
     },
     healthheaderStyle:{
         fontSize:22,
