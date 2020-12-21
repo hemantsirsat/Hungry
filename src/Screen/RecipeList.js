@@ -16,8 +16,8 @@ const RecipeList = ({route, navigation}) => {
     }
 
     return (
-        <View>
-            <StatusBar style='auto'/>
+        <View style={{flex:1, paddingTop:25}}>
+            <StatusBar style='dark' backgroundColor='#fff' />
             <FlatList
                 showsVerticalScrollIndicator={false}
                 data={searchResult}

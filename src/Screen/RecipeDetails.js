@@ -20,7 +20,7 @@ const RecipeDetails = ({ route, navigation }) => {
 
     return(
         <View style={{flex:1}}>
-            <StatusBar style="auto" />
+            <StatusBar style='dark' backgroundColor='#a9d6e5'/>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Image source={{uri:imageURL}} style={styles.headerimageStyle}/>
                 <View style={styles.contentStyle}>
