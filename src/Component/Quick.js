@@ -16,7 +16,16 @@ const Quick = ({category, destination}) =>{
     
     return(
         <View style={styles.viewStyle}>
-            <Text style={styles.categoryStyle}>{category}</Text>
+            <View style={styles.headingStyle}>
+                <Text style={styles.categoryStyle}>{category}</Text>
+                <TouchableOpacity
+                    onPress={()=>{
+                        destination.navigate('RecipeList',{searchTerm:category})
+                    }}
+                >
+                    <Text style={styles.moreStyle}>More</Text>
+                </TouchableOpacity>
+            </View>
             <FlatList
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -44,12 +53,21 @@ const styles = StyleSheet.create({
         marginTop:20,
         marginVertical:5
     },
+    headingStyle:{
+        flexDirection:'row',
+        justifyContent:'space-between'
+    },
     categoryStyle:{
         fontSize:25,
         fontWeight:'bold',
         paddingLeft:15,
         paddingVertical:18,
         fontSize:20
+    },
+    moreStyle:{
+        textAlign:'right',
+        paddingRight:15,
+        paddingVertical:18
     }
 });
 

@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import useSearch from '../Hook/useSearch';
 import RecipeListCard from '../Component/RecipeListCard';
 import { FlatList } from 'react-native-gesture-handler';
+import { StatusBar } from 'expo-status-bar';
 
 const RecipeList = ({route, navigation}) => {
     const [FetchRecipe, searchResult, ErrorMessage] = useSearch('');
@@ -16,6 +17,7 @@ const RecipeList = ({route, navigation}) => {
 
     return (
         <View>
+            <StatusBar style='auto'/>
             <FlatList
                 showsVerticalScrollIndicator={false}
                 data={searchResult}

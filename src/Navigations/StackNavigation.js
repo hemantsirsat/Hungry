@@ -9,15 +9,15 @@ const Stack = createStackNavigator();
 
 export default function HomeScreenNavigation () {
   return (
-    <Stack.Navigator
-        screenOptions={{
-            headerShown:false
-        }}
-    >
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="RecipeList" component={RecipeList} />
-      <Stack.Screen name="Recipe" component={RecipeDetails} />
-      <Stack.Screen name="InDetail" component={InDetail} />      
-    </Stack.Navigator>
+      <Stack.Navigator
+          screenOptions={{
+              headerShown:false
+          }}
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="RecipeList" component={RecipeList} />
+        <Stack.Screen name="Recipe" component={RecipeDetails} />
+        <Stack.Screen name="InDetail" component={InDetail} />      
+      </Stack.Navigator>
   );
 }

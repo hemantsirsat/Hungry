@@ -19,7 +19,7 @@ const HomeScreen =({ navigation }) =>{
                 navigation={navigation}
             />
             <ScrollView>
-                <StatusBar style='auto' translucent={true}/>
+                <StatusBar style='auto'/>
                 <Quick 
                     category="Quick"
                     destination={navigation}

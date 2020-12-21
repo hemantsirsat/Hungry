@@ -12,7 +12,7 @@ export default () =>{
                     q:searchTerm,
                     app_id:'949e6c53',
                     app_key:'abb80fc1f374e1152307b04a957af513',
-                    to:'30',
+                    to:'40',
                 }
             });
             setsearchResult(response.data.hits);
