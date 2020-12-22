@@ -18,7 +18,7 @@ const SearchBar = ({ navigation }) => {
                 </TouchableOpacity>
                 <TextInput
                     style={styles.searchBarStyle}
-                    placeholder='Search'
+                    placeholder='Search for recipes'
                     autoCapitalize='none'
                     autoCorrect={false}
                     value={myRecipe}
@@ -34,11 +34,11 @@ const SearchBar = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     viewStyle:{
-        marginTop:25,
+        backgroundColor:'#fff'
     },
     cravingStyle:{
         fontSize:24,
-        marginTop:20,
+        marginTop:40,
         marginHorizontal:15
     },
     barStyle:{

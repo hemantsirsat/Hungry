@@ -15,11 +15,14 @@ import Desert from '../Component/Desert';
 const HomeScreen =({ navigation }) =>{
     return(
         <>
+            <StatusBar style='auto' backgroundColor='#fff'/>
             <SearchBar 
                 navigation={navigation}
             />
-            <ScrollView>
-                <StatusBar style='auto'/>
+                <ScrollView
+                showsVerticalScrollIndicator={false}
+                style={{backgroundColor:'#fff'}}
+            >
                 <Quick 
                     category="Quick"
                     destination={navigation}
@@ -65,7 +68,6 @@ const HomeScreen =({ navigation }) =>{
 };
 
 const styles = StyleSheet.create({
-    scrollStyle:{}
 });
 
 export default HomeScreen;

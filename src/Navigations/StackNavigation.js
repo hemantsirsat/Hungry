@@ -11,7 +11,15 @@ export default function HomeScreenNavigation () {
   return (
       <Stack.Navigator
           screenOptions={{
-              headerShown:false
+              headerTitle:false,
+              headerTransparent:true,
+              headerTintColor:'#fff',
+              headerLeftContainerStyle:{
+                backgroundColor:'rgba(0,0,0,0.3)',
+                borderRadius:100,
+                marginLeft:10,
+                marginTop:10,
+              }
           }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />

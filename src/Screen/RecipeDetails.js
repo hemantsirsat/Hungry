@@ -20,8 +20,10 @@ const RecipeDetails = ({ route, navigation }) => {
 
     return(
         <View style={{flex:1, backgroundColor:"#fff"}}>
-            <StatusBar style='dark' backgroundColor='#fff'/>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <StatusBar style='light' backgroundColor='rgba(0,0,0,0.5)'/>
+            <ScrollView 
+                showsVerticalScrollIndicator={false}
+            >
                 <Image source={{uri:imageURL}} style={styles.headerimageStyle}/>
                 <View style={styles.contentStyle}>
                     <Text style={styles.labelStyle}>{recipeDetails.label}</Text>
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
         marginHorizontal:30,
         textAlign:'center',
         fontSize:15,
-        color:'#00a896'
+        color:'#2ec4b6'
     },
     unitStyle:{
         fontWeight:'bold'
