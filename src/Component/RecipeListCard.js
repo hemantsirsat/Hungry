@@ -29,9 +29,7 @@ const RecipeListCard = ({dish, navigation}) => {
 const styles = StyleSheet.create({
     imageStyle:{
         height:150,
-       // marginHorizontal:15,
         borderRadius:10,
-       // marginVertical:7,
     },
     detailStyle:{
         position:'absolute',

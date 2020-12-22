@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextInput, Text, View, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SearchBar = ({ navigation }) => {
     const [myRecipe, setmyRecipe] = useState('');
@@ -8,7 +9,13 @@ const SearchBar = ({ navigation }) => {
         <View style={styles.viewStyle}>
             <Text style={styles.cravingStyle}>What Are You Craving?</Text>
             <View style={styles.barStyle}>
-                <Feather name='search' style={styles.iconStyle} size={18}/>
+                <TouchableOpacity
+                    onPress={()=> {
+                        navigation.navigate('RecipeList',{searchTerm:myRecipe});
+                    }}
+                >
+                    <Feather name='search' style={styles.iconStyle} size={19}/>
+                </TouchableOpacity>
                 <TextInput
                     style={styles.searchBarStyle}
                     placeholder='Search'

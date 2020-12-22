@@ -19,8 +19,8 @@ const RecipeDetails = ({ route, navigation }) => {
     const totalTime = parseFloat(recipeDetails.totalTime).toFixed(2);
 
     return(
-        <View style={{flex:1}}>
-            <StatusBar style='dark' backgroundColor='#a9d6e5'/>
+        <View style={{flex:1, backgroundColor:"#fff"}}>
+            <StatusBar style='dark' backgroundColor='#fff'/>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Image source={{uri:imageURL}} style={styles.headerimageStyle}/>
                 <View style={styles.contentStyle}>
@@ -34,7 +34,7 @@ const RecipeDetails = ({ route, navigation }) => {
                             <Text>{totalWeight}{"\n"}</Text> 
                             <Text style={styles.unitStyle}>g</Text>    
                         </Text>
-                        <Text style={styles.innerinshortStyle}>
+                        <Text style={styles.timeStyle}>
                             { parseFloat(totalTime)===0.00 ?
                                     <Text>N/A{"\n"}</Text> 
                                 :
@@ -43,7 +43,10 @@ const RecipeDetails = ({ route, navigation }) => {
                             <Text style={styles.unitStyle}>min</Text>
                         </Text>
                     </View>
+                    
                     <View style={{paddingRight:5}}>
+                        {healthlabel ?
+                        <View>
                         <Text style={styles.healthheaderStyle}>Health Labels</Text>
                         <FlatList
                             horizontal
@@ -56,6 +59,8 @@ const RecipeDetails = ({ route, navigation }) => {
                                 )
                             }}    
                         />
+                        </View>
+                        :null}
                     </View>
                     <View style={styles.ingredientHeadingStyle}>
                         <MaterialIcons name="list-alt" size={22} color="black" />
@@ -108,6 +113,13 @@ const styles = StyleSheet.create({
         textAlign:'center',
         fontSize:15,
     },
+    timeStyle:{
+        alignSelf:'center',
+        marginHorizontal:30,
+        textAlign:'center',
+        fontSize:15,
+        color:'#00a896'
+    },
     unitStyle:{
         fontWeight:'bold'
     },
@@ -134,7 +146,6 @@ const styles = StyleSheet.create({
         marginVertical:6,
         fontSize:17,
         marginHorizontal:15,
-
     },
     textStyle:{
         fontSize:22,

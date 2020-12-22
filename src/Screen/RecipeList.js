@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import useSearch from '../Hook/useSearch';
 import RecipeListCard from '../Component/RecipeListCard';
 import { FlatList } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
+import Spinner from  'react-native-spinkit';
 
 const RecipeList = ({route, navigation}) => {
     const [FetchRecipe, searchResult, ErrorMessage] = useSearch('');
@@ -17,7 +18,7 @@ const RecipeList = ({route, navigation}) => {
 
     return (
         <View style={{flex:1, paddingTop:25}}>
-            <StatusBar style='dark' backgroundColor='#fff' />
+            <StatusBar style='dark'  />
             <FlatList
                 showsVerticalScrollIndicator={false}
                 data={searchResult}
@@ -32,6 +33,7 @@ const RecipeList = ({route, navigation}) => {
                 }}
             />
         </View>
+
     );
 }
 
