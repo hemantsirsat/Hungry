@@ -3,7 +3,7 @@ import { TextInput, Text, View, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const SearchBar = ({ navigation, api_id, api_key, to }) => {
+const SearchBar = ({ navigation, api_id, api_key, from, to }) => {
     const [myRecipe, setmyRecipe] = useState('');
     return(
         <View style={styles.viewStyle}>
@@ -11,7 +11,7 @@ const SearchBar = ({ navigation, api_id, api_key, to }) => {
             <View style={styles.barStyle}>
                 <TouchableOpacity
                     onPress={()=> {
-                        navigation.navigate('RecipeList',{searchTerm:myRecipe,api_id,api_key,to});
+                        navigation.navigate('RecipeList',{searchTerm:myRecipe,api_id,api_key,from,to});
                     }}
                 >
                     <Feather name='search' style={styles.iconStyle} size={19}/>
@@ -24,7 +24,7 @@ const SearchBar = ({ navigation, api_id, api_key, to }) => {
                     value={myRecipe}
                     onChangeText={term => setmyRecipe(term)}
                     onEndEditing={()=>{
-                        navigation.navigate('RecipeList',{searchTerm:myRecipe,api_id,api_key,to});
+                        navigation.navigate('RecipeList',{searchTerm:myRecipe,api_id,api_key,from,to});
                     }}
                 />
             </View>
