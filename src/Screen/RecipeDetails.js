@@ -45,9 +45,8 @@ const RecipeDetails = ({ route, navigation }) => {
                             <Text style={styles.unitStyle}>min</Text>
                         </Text>
                     </View>
-                    
                     <View style={{paddingRight:5}}>
-                        {healthlabel ?
+                        {healthlabel.length!==0 ?
                         <View>
                         <Text style={styles.healthheaderStyle}>Health Labels</Text>
                         <FlatList
