@@ -17,7 +17,7 @@ export default function HomeScreenNavigation () {
               headerLeftContainerStyle:{
                 backgroundColor:'rgba(0,0,0,0.3)',
                 borderRadius:100,
-                marginLeft:10,
+                marginLeft:15,
                 marginTop:10,
               }
           }}

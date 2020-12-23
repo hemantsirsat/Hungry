@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, FlatList } from 'react-native';
 import useSearch from '../Hook/useSearch';
 import RecipeListCard from '../Component/RecipeListCard';
-import { FlatList } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import Spinner from  'react-native-spinkit';
 
 const RecipeList = ({route, navigation}) => {
     const [FetchRecipe, searchResult, ErrorMessage] = useSearch('');
-
+    const parameters = route.params;
+    
     useEffect(()=>{
-        FetchRecipe(route.params.searchTerm);
+        FetchRecipe(parameters.searchTerm, parameters.api_id, parameters.api_key, parameters.to);
     },[]);
     if(!searchResult){
         return null;
