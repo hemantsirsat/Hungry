@@ -28,6 +28,7 @@ const HomeScreen =({ navigation }) =>{
                 to={40}
             />
             <FlatList
+                showsVerticalScrollIndicator={false}
                 data={types}
                 keyExtractor={(item)=>item.unique}
                 renderItem={({item})=>{

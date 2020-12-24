@@ -16,10 +16,14 @@ export default () =>{
                     to:to,
                 }
             });
+            if(response.data.hits.length==0){
+                throw "Error While Fetching"
+            }
             setsearchResult(response.data.hits);
+            
         }
         catch(err){
-            setErrorMessage("Something Went Wrong! Retry");
+            setErrorMessage("No Such Recipe Found! Try Something Else");
         }
     };
     return [FetchRecipe, searchResult, ErrorMessage];
