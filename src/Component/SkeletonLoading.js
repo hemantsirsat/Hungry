@@ -10,8 +10,6 @@ const SkeletonLoading = () =>{
                 <View style={styles.loaderStyle}/>
                 <View style={styles.loaderStyle}/>
                 <View style={styles.loaderStyle}/>
-                <View style={styles.loaderStyle}/>
-                <View style={styles.loaderStyle}/>
             </SkeletonPlaceholder>
         </View>
     )
