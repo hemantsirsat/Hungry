@@ -3,9 +3,10 @@ import { Text, View, StyleSheet, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as Google from 'expo-google-app-auth';
 import firebase from 'firebase';
+import { AntDesign } from '@expo/vector-icons';
 
 class SignInScreen extends Component {
-    
+
     isUserEqual = (googleUser, firebaseUser) => {
         if (firebaseUser) {
           var providerData = firebaseUser.providerData;
@@ -102,10 +103,22 @@ class SignInScreen extends Component {
     render(){
         return(
             <View style={styles.viewStyle}>
+                <Image 
+                    source={require('../../assets/SignIn.png')}
+                    style={styles.imageStyle}
+                />
+                <View style={{alignItems:'center'}}>
+                    <Text style={styles.titleStyle}>Hungry</Text>
+                    <Text style={styles.subtitleStyle}>Cook on your own</Text>
+                </View>
                 <TouchableOpacity
                    onPress={()=> this.signInWithGoogleAsync()}
-                >
-                    <Text style={styles.textStyle}>Sign In Using Google</Text>
+                   style={styles.buttonStyle}
+                >   
+                    <View style={styles.buttonTextStyle}>
+                        <AntDesign name="google" size={20} color="#fff" />
+                        <Text style={styles.textStyle}>Sign In Using Google</Text>
+                    </View>
                 </TouchableOpacity>
             </View>
         );
@@ -116,11 +129,40 @@ const styles = StyleSheet.create({
     viewStyle:{
         flex:1,
         justifyContent:'center',
+        backgroundColor:'#fff'
+    },
+    imageStyle:{
+        width:200,
+        height:200,
+        alignSelf:'center'
+    },
+    buttonStyle:{
+        marginVertical:15,
+        marginHorizontal:25,
+        backgroundColor:'#4285F4',
+        height:45,
+        borderRadius:10,
+        justifyContent:'center'
+    },
+    buttonTextStyle:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center'
     },
     textStyle:{
         alignSelf:'center',
-        fontSize:20
-    }
+        fontSize:20,
+        color:'#fff',
+        paddingLeft:10,
+    },
+    titleStyle:{
+        fontSize:35,
+        fontWeight:'bold'
+    },
+    subtitleStyle:{
+        fontSize:12,
+        fontStyle:'italic'
+    },
 });
 
 export default SignInScreen;
