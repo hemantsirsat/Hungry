@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import * as Google from 'expo-google-app-auth';
+import * as GoogleSignIn from 'expo-google-app-auth';
 import firebase from 'firebase';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -82,9 +82,9 @@ class SignInScreen extends Component {
 
     signInWithGoogleAsync = async()=>{
         try{
-            const result = await Google.logInAsync({
+            const result = await GoogleSignIn.logInAsync({
                 behaviour:'web',
-                androidClientId:'583854753457-olt5dq8gpbq0qemm8chc3m3uvhlkqfvf.apps.googleusercontent.com',
+                androidClientId:'583854753457-b3h146rn36j9s4sq7oip3bm70uqdk2tp.apps.googleusercontent.com',
                 scopes:['profile','email']
             })
             if(result.type === 'success'){
@@ -109,7 +109,6 @@ class SignInScreen extends Component {
                 />
                 <View style={{alignItems:'center'}}>
                     <Text style={styles.titleStyle}>Hungry</Text>
-                    <Text style={styles.subtitleStyle}>Cook on your own</Text>
                 </View>
                 <TouchableOpacity
                    onPress={()=> this.signInWithGoogleAsync()}
@@ -158,10 +157,6 @@ const styles = StyleSheet.create({
     titleStyle:{
         fontSize:35,
         fontWeight:'bold'
-    },
-    subtitleStyle:{
-        fontSize:12,
-        fontStyle:'italic'
     },
 });
 

@@ -23,7 +23,13 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.hemant.sirsat.hungry"
+      "package": "com.hemant.sirsat.hungry",
+      "config":{
+        "googleSignIn":{
+          "apiKey":"AIzaSyCU9YAOsux2W3dlKFfIVr68wgFTykjoz0U",
+          "certificateHash":"D319BCA004FA5FD7AB700DFC7DBA3E20EB130E81"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
