@@ -3,7 +3,6 @@ import { StatusBar } from 'expo-status-bar';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Emoji from 'react-native-emoji';
 import firebase from 'firebase';
-import * as Google from 'expo-google-app-auth';
 
 const About =({navigation}) =>{
 
@@ -39,7 +38,7 @@ const About =({navigation}) =>{
                     style={styles.signoutStyle}
                     onPress={()=>userSignOut()}
                 >
-                    <Text style={styles.signoutTextStyle}>Sign out</Text>
+                    <Text style={styles.signoutTextStyle}>Sign Out</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.favouriteStyle}>
@@ -99,7 +98,8 @@ const styles = StyleSheet.create({
     },
     signoutTextStyle:{
         color:'#0077b6',
-        fontSize:15
+        fontSize:15,
+        fontWeight:'bold'
     },
     thankStyle:{
         fontSize:10,
