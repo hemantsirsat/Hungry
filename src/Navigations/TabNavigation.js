@@ -40,7 +40,7 @@ function TabNavigation () {
           name="About" 
           component={About} 
           options={{
-            tabBarLabel: 'About',
+            tabBarLabel: 'Profile',
             tabBarColor:"#9eb3c2",
             tabBarIcon: ({ color }) => (
               <Feather name="info" size={24} color={color} />

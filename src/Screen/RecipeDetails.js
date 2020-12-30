@@ -145,7 +145,6 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         marginVertical:15,
         marginHorizontal:15,
-
     },
     innerinshortStyle:{
         alignSelf:'center',
@@ -174,13 +173,11 @@ const styles = StyleSheet.create({
         borderRadius:10,
         padding:10,
         marginVertical:10
-
     },
     ingredientHeadingStyle:{
         flexDirection:'row',
         marginVertical:10,
         marginHorizontal:15,
-
     },
     ingredientStyle:{
         marginVertical:6,
