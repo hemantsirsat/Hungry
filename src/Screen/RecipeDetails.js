@@ -1,8 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image, StyleSheet, FlatList, ScrollView, TouchableOpacity, Share } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
+import { MaterialIcons, Entypo } from '@expo/vector-icons';
+import  FavouriteButton from '../Component/FavouriteButton';
 
 const RecipeDetails = ({ route, navigation }) => {
     let recipeDetails='';
@@ -52,7 +52,10 @@ const RecipeDetails = ({ route, navigation }) => {
                 </View>
                 <Image source={{uri:imageURL}} style={styles.headerimageStyle}/>
                 <View style={styles.contentStyle}>
-                    <Text style={styles.labelStyle}>{recipeName}</Text>
+                    <View style={styles.nameandfavStyle}>
+                        <Text style={styles.labelStyle}>{recipeName}</Text>
+                        <FavouriteButton />
+                    </View>
                     <View style={styles.inshortStyle}>
                         <Text style={styles.innerinshortStyle}>
                             <Text>{calories}{"\n"}</Text> 
@@ -130,14 +133,18 @@ const styles = StyleSheet.create({
     },
     contentStyle:{
         marginBottom:10
-    },  
+    },
+    nameandfavStyle:{
+        flexDirection:'row',
+        marginTop:20,
+        marginHorizontal:15,
+        flex:1
+    },
     labelStyle:{
         fontSize:24,
         fontWeight:'bold',
-        marginTop:20,
         textAlign:'left',
-        marginHorizontal:15,
-
+        marginRight:5
     },  
     inshortStyle:{
         flexDirection:'row',

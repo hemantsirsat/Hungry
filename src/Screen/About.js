@@ -106,7 +106,8 @@ const styles = StyleSheet.create({
         fontStyle:'italic',
         marginHorizontal:20,
         textAlign:'center',
-        bottom:5,
+        bottom:0,
+        paddingBottom:5,
         position:'absolute',
         alignSelf:'center'
     }
