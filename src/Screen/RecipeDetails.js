@@ -1,7 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Image, StyleSheet, FlatList, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, Image, StyleSheet, FlatList, ScrollView, TouchableOpacity, Share } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 const RecipeDetails = ({ route, navigation }) => {
     let recipeDetails='';
@@ -10,22 +11,48 @@ const RecipeDetails = ({ route, navigation }) => {
         : 
         recipeDetails=route.params.item.recipe 
     }
+    const recipeName = recipeDetails.label;
     const imageURL = recipeDetails.image;
     const ingredients = recipeDetails.ingredientLines;
     const healthlabel = recipeDetails.healthLabels;
     const calories = parseFloat(recipeDetails.calories).toFixed(2);
     const totalWeight = parseFloat(recipeDetails.totalWeight).toFixed(2);
     const totalTime = parseFloat(recipeDetails.totalTime).toFixed(2);
+    const recipeDetailsUrl = recipeDetails.url;
+
+    const onShare = async() =>{
+        try{
+            const result = await Share.share({
+                message:'Hey, Check Out This Amazing Recipe on '+recipeName+' '+recipeDetailsUrl,
+            });
+            if(result.action === Share.sharedAction){
+                alert("Recipe Shared")
+            }
+            else if (result.action === Share.dismissedAction){
+                alert("Recipe Sharing cancelled")
+            }
+        }
+        catch(err){
+            alert(error.message);
+        }
+    };
 
     return(
         <View style={{flex:1, backgroundColor:"#fff"}}>
-            <StatusBar style='light' backgroundColor='rgba(0,0,0,0.5)'/>
+            <StatusBar style='light' hidden={true} backgroundColor='rgba(0,0,0,0.5)'/>
             <ScrollView 
                 showsVerticalScrollIndicator={false}
             >
+                <View style={styles.shareViewStyle}>
+                    <TouchableOpacity
+                        onPress={()=>onShare()}
+                    >
+                        <Text style={styles.shareStyle}><Entypo name="share" size={28} color="white" /></Text>
+                    </TouchableOpacity>
+                </View>
                 <Image source={{uri:imageURL}} style={styles.headerimageStyle}/>
                 <View style={styles.contentStyle}>
-                    <Text style={styles.labelStyle}>{recipeDetails.label}</Text>
+                    <Text style={styles.labelStyle}>{recipeName}</Text>
                     <View style={styles.inshortStyle}>
                         <Text style={styles.innerinshortStyle}>
                             <Text>{calories}{"\n"}</Text> 
@@ -74,7 +101,7 @@ const RecipeDetails = ({ route, navigation }) => {
                 </View>
                 <TouchableOpacity
                     style={styles.knowMoreStyle}
-                    onPress={()=>navigation.navigate('InDetail',{website:recipeDetails.url})}
+                    onPress={()=>navigation.navigate('InDetail',{website:recipeDetailsUrl})}
                 >
                     <Text style={styles.tapStyle}>Tap Here To Know More!</Text>
                 </TouchableOpacity>
@@ -87,6 +114,19 @@ const styles = StyleSheet.create({
     headerimageStyle:{
         width:'auto',
         height:500,
+    },
+    shareViewStyle:{
+        zIndex:1,
+        position:'absolute',
+        alignItems:'flex-end',
+        right:0
+    },
+    shareStyle:{
+        marginRight:15,
+        marginTop:10,
+        backgroundColor:'rgba(0,0,0,0.3)',
+        borderRadius:30,
+        padding:10
     },
     contentStyle:{
         marginBottom:10

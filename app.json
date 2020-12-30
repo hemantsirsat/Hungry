@@ -7,7 +7,8 @@
     "icon": "./assets/logo_transparent.png",
     "splash": {
       "image": "./assets/Splash.png",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ffffff",
+      "resizeMode":"contain"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -25,7 +26,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo_transparent.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.hemant.sirsat.hungry",
@@ -37,7 +38,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/logo_transparent.png"
     },
     "description": ""
   }
