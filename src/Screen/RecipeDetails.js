@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image, StyleSheet, FlatList, ScrollView, TouchableOpacity, Share } from 'react-native';
 import { MaterialIcons, Entypo } from '@expo/vector-icons';
-import  FavouriteButton from '../Component/FavouriteButton';
+import firebase from 'firebase';
 
 const RecipeDetails = ({ route, navigation }) => {
     let recipeDetails='';
@@ -19,6 +19,39 @@ const RecipeDetails = ({ route, navigation }) => {
     const totalWeight = parseFloat(recipeDetails.totalWeight).toFixed(2);
     const totalTime = parseFloat(recipeDetails.totalTime).toFixed(2);
     const recipeDetailsUrl = recipeDetails.url;
+
+    // const userID = firebase.auth().currentUser.uid;
+
+    // const ifAlreadyExists =(userID)=>{
+    //     firebase
+    //         .database()
+    //             .ref('/users/'+userID+'/favourites/')
+    //                 .once('value',function(recipe){
+    //                     if(recipe.exists()){
+    //                         return true;
+    //                     }
+    //                     else{
+    //                         return false;
+    //                     }
+    //                 });
+    // }
+
+    // const addRemoveFavourite = (userID, recipe)=>{
+    //     if(ifAlreadyExists(userID)){
+    //         firebase
+    //             .database()
+    //                 .ref('users/'+userID+'/favourites/')
+    //                     .remove({recipe});
+    //     return false;
+    //     }
+    //     else{
+    //         firebase
+    //         .database()
+    //             .ref('users/'+userID+'/favourites/')
+    //                 .push({recipe});
+    //         return true;
+    //     }
+    // }
 
     const onShare = async() =>{
         try{
@@ -54,7 +87,23 @@ const RecipeDetails = ({ route, navigation }) => {
                 <View style={styles.contentStyle}>
                     <View style={styles.nameandfavStyle}>
                         <Text style={styles.labelStyle}>{recipeName}</Text>
-                        <FavouriteButton />
+
+
+
+
+                        {/* <TouchableOpacity
+                            onPress={()=>{
+                                addRemoveFavourite(userID, recipeDetailsUrl);
+                                }
+                            }
+                            style={styles.favouritebuttonStyle}
+                        >
+                            <Entypo name="heart" size={24} color={addRemoveFavourite(userID,recipeDetailsUrl)?'#d90429':'#DEDEDE'} />
+                        </TouchableOpacity> */}
+
+
+
+
                     </View>
                     <View style={styles.inshortStyle}>
                         <Text style={styles.innerinshortStyle}>
@@ -140,11 +189,15 @@ const styles = StyleSheet.create({
         marginHorizontal:15,
         flex:1
     },
+    favouritebuttonStyle:{
+        marginLeft:'auto',
+        marginHorizontal:10
+    },
     labelStyle:{
         fontSize:24,
         fontWeight:'bold',
         textAlign:'left',
-        marginRight:5
+        marginRight:45
     },  
     inshortStyle:{
         flexDirection:'row',

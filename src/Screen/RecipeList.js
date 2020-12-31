@@ -10,7 +10,7 @@ const RecipeList = ({route, navigation}) => {
     const parameters = route.params;
 
     useEffect(()=>{      
-        FetchRecipe(parameters.searchTerm, parameters.api_id, parameters.api_key, parameters.from, parameters.to)
+        FetchRecipe(parameters.searchTerm, parameters.api_id, parameters.api_key, parameters.from, parameters.to, parameters.searchTerm)
     },[]);
 
     if(searchResult.length===0){

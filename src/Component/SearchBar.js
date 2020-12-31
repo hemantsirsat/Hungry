@@ -7,7 +7,6 @@ const SearchBar = ({ navigation, api_id, api_key, from, to }) => {
     const [myRecipe, setmyRecipe] = useState('');
     return(
         <View style={styles.viewStyle}>
-            <Text style={styles.cravingStyle}>What Are You Craving?</Text>
             <View style={styles.barStyle}>
                 <TouchableOpacity
                     onPress={()=> {
@@ -34,12 +33,8 @@ const SearchBar = ({ navigation, api_id, api_key, from, to }) => {
 
 const styles = StyleSheet.create({
     viewStyle:{
-        backgroundColor:'#fff'
-    },
-    cravingStyle:{
-        fontSize:24,
-        marginTop:40,
-        marginHorizontal:15
+        backgroundColor:'#fff',
+        marginTop:15
     },
     barStyle:{
         flexDirection:'row',

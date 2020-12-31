@@ -24,7 +24,7 @@ const About =({navigation}) =>{
     }
     return(
         <View style={styles.viewStyle}>
-            <StatusBar style='auto' />
+            <StatusBar style='auto' hidden={true} />
             <View style={styles.detailStyle}>
                 <Image 
                     source={{uri:userProfilePicture}}
@@ -53,7 +53,6 @@ const About =({navigation}) =>{
 
 const styles = StyleSheet.create({
     viewStyle:{
-        marginTop:20,
         flex:1,
         backgroundColor:'#fff',
     },

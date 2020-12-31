@@ -5,7 +5,7 @@ export default () =>{
     const [searchResult, setsearchResult] = useState([]);
     const [ErrorMessage, setErrorMessage] = useState('');
 
-    const FetchRecipe = async ( searchTerm, app_id, api_key, from, to ) =>{
+    const FetchRecipe = async ( searchTerm, app_id, api_key, from, to, cusineType=false ) =>{
         try{
             const response = await Edamam.get('/search',{
                 params:{
@@ -14,6 +14,7 @@ export default () =>{
                     app_key:api_key,
                     from:from,
                     to:to,
+                    cusineType:cusineType
                 }
             });
             if(response.data.hits.length==0){
