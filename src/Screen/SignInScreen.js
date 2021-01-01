@@ -86,7 +86,7 @@ class SignInScreen extends Component {
                 behaviour:'web',
                 androidStandaloneAppClientId:'583854753457-b3h146rn36j9s4sq7oip3bm70uqdk2tp.apps.googleusercontent.com',
                 androidClientId:'583854753457-j69e3fs3bevk3ed8204mmipfd6og74jj.apps.googleusercontent.com',
-                iosClientId:'583854753457-9karl3fdfrr51u30v9d779s3bjhqgj86.apps.googleusercontent.com',
+                iosClientId:'583854753457-9sjt9g76il676kjh033rq0jgg165leu8.apps.googleusercontent.com',
                 scopes:['profile','email']
             })
             if(result.type === 'success'){
