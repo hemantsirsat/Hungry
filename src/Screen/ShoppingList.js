@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import AddItem from '../Component/AddItem';
 
 const ShoppingList =() =>{
     return(
         <View style={styles.viewStyle}>
-            <Text style={styles.textStyle}>Feature Coming Soon</Text>
+            <AddItem />
         </View>
     );
 };

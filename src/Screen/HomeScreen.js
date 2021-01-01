@@ -49,7 +49,7 @@ const HomeScreen =({ navigation }) =>{
                     to={40}
                 />
                 <StatusBar style='dark' backgroundColor='#fff'/>
-                <Text style={styles.cusineStyle}>Cusine</Text>
+                <Text style={styles.cusineStyle}>Cuisine</Text>
                 <FlatList
                     horizontal
                     ListFooterComponent={<View style={{marginRight:10}}></View>}
