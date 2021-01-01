@@ -58,10 +58,7 @@ const RecipeDetails = ({ route, navigation }) => {
             const result = await Share.share({
                 message:'Hey, Check Out This Amazing Recipe on '+recipeName+' '+recipeDetailsUrl,
             });
-            if(result.action === Share.sharedAction){
-                alert("Recipe Shared")
-            }
-            else if (result.action === Share.dismissedAction){
+            if (result.action === Share.dismissedAction){
                 alert("Something Went Wrong! Try Again")
             }
         }
