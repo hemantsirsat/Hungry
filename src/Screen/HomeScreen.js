@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, FlatList, Text } from 'react-native';
+import { StyleSheet, FlatList, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import SearchBar from '../Component/SearchBar';
 import Cusine from '../Component/Cusine';
@@ -34,63 +34,69 @@ const HomeScreen =({ navigation }) =>{
     ]
 
     return(
-        <ScrollView
-            style={{backgroundColor:'#fff'}}
-            stickyHeaderIndices={[1]}
-            showsVerticalScrollIndicator={false}
-        >
-            <Text style={styles.cravingStyle}>What Are You Craving?</Text>
-            <SearchBar 
-                navigation={navigation}
-                api_id={id3}
-                api_key={key3}
-                from={0}
-                to={40}
-            />
-            <StatusBar style='auto' backgroundColor='#fff'/>
-            <Text style={styles.cusineStyle}>Cusine</Text>
-            <FlatList
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                data={allCusines}
-                keyExtractor={(item)=>item.id}
-                renderItem={({item})=>{
-                    return(
-                        <Cusine 
-                            cusineImageURL={item.ImageURL}
-                            navigation = {navigation}
-                            cusineName={item.Cusinename}
-                            api_id={item.api_id}
-                            api_key={item.api_key}
-                            from={item.from}
-                            to={item.to}
-                         />
-                    )
-                }}
-            />          
-            <FlatList
+        <View style={styles.viewStyle}>
+            <ScrollView
+                style={{backgroundColor:'#fff'}}
+                stickyHeaderIndices={[1]}
                 showsVerticalScrollIndicator={false}
-                data={types}
-                keyExtractor={(item)=>item.unique}
-                renderItem={({item})=>{
-                    return(
-                        
-                        <Categories 
-                            category={item.id} 
-                            destination={navigation}
-                            api_id={item.api_id}
-                            api_key={item.api_key}
-                            from={item.from}
-                            to={item.to}
-                        />
-                    )
-                }}
-            />
-        </ScrollView>
+            >
+                <Text style={styles.cravingStyle}>What Are You Craving?</Text>
+                <SearchBar 
+                    navigation={navigation}
+                    api_id={id3}
+                    api_key={key3}
+                    from={0}
+                    to={40}
+                />
+                <StatusBar style='dark' backgroundColor='#fff'/>
+                <Text style={styles.cusineStyle}>Cusine</Text>
+                <FlatList
+                    horizontal
+                    ListFooterComponent={<View style={{marginRight:10}}></View>}
+                    showsHorizontalScrollIndicator={false}
+                    data={allCusines}
+                    keyExtractor={(item)=>item.id}
+                    renderItem={({item})=>{
+                        return(
+                            <Cusine 
+                                cusineImageURL={item.ImageURL}
+                                navigation = {navigation}
+                                cusineName={item.Cusinename}
+                                api_id={item.api_id}
+                                api_key={item.api_key}
+                                from={item.from}
+                                to={item.to}
+                            />
+                        )
+                    }}
+                />          
+                <FlatList
+                    showsVerticalScrollIndicator={false}
+                    data={types}
+                    keyExtractor={(item)=>item.unique}
+                    renderItem={({item})=>{
+                        return(
+                            
+                            <Categories 
+                                category={item.id} 
+                                destination={navigation}
+                                api_id={item.api_id}
+                                api_key={item.api_key}
+                                from={item.from}
+                                to={item.to}
+                            />
+                        )
+                    }}
+                />
+            </ScrollView>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    viewStyle:{
+        backgroundColor:'#fff'
+    },
     cravingStyle:{
         fontSize:24,
         marginTop:40,

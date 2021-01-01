@@ -62,7 +62,7 @@ const RecipeDetails = ({ route, navigation }) => {
                 alert("Recipe Shared")
             }
             else if (result.action === Share.dismissedAction){
-                alert("Recipe Sharing cancelled")
+                alert("Something Went Wrong! Try Again")
             }
         }
         catch(err){

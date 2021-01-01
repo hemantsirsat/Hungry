@@ -28,6 +28,7 @@ const Categories = ({ category, destination, api_id, api_key, from, to }) =>{
             </View>
             <FlatList
                 horizontal
+                ListFooterComponent={<View style={{marginRight:10}}></View>}
                 showsHorizontalScrollIndicator={false}
                 data={Result}
                 keyExtractor={(item)=>item.recipe.uri}

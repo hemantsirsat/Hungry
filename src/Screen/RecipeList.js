@@ -36,8 +36,9 @@ const RecipeList = ({route, navigation}) => {
 
     return (
         <View style={styles.viewStyle}>
-            <StatusBar style='dark' />
+            <StatusBar style='light' backgroundColor='rgba(0,0,0,0.5)'/>
                 <FlatList
+                    ListHeaderComponent={<View style={{marginTop:20}}></View>}
                     showsVerticalScrollIndicator={false}
                     data={searchResult}
                     keyExtractor={(item)=>item.recipe.uri}
@@ -57,7 +58,6 @@ const RecipeList = ({route, navigation}) => {
 const styles = StyleSheet.create({
     viewStyle:{
         flex:1,
-        paddingTop:25, 
         backgroundColor:'#fff', 
         justifyContent:'center'
     },
