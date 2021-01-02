@@ -17,14 +17,16 @@ const styles = StyleSheet.create({
     viewStyle:{
         flex:1,
         marginHorizontal:15,
-        backgroundColor:'#adb5bd',
+        backgroundColor:'#e0f7fc',
         marginVertical:5,
         borderRadius:10,
+        borderWidth:1,
+        borderColor:'#83dff0'
     },
     textStyle:{
-        fontSize:18,
+        fontSize:20,
         padding:10,
-        color:'#fff',
+        color:'#000'
     }
 });
 
