@@ -2,13 +2,21 @@ import React, { Component, useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import firebase from 'firebase';
+import ShopItemList from './ShopItemList';
+import { FlatList } from 'react-native-gesture-handler';
 
 const AddItem = () => {
-    const [shopitems, setShopItems] = useState();
-    const userId = firebase.auth().currentUser.uid;
-
-    const [present, setPresent] = useState(false);
+    const [itemName, setItemName] = useState('');
     const [itemList, setItemList] = useState([]);
+    // const userId = firebase.auth().currentUser.uid;
+
+    //add item to firebase database under user/shopinglist
+    // const addToList = (item) =>{
+    //     firebase
+    //         .database()
+    //             .ref('/users/'+userId+'/ShopingList/')
+    //                 .push(item);
+    //     }
 
     // check if already exists
     // const checkIfAlreadyExists = (item) =>{
@@ -27,43 +35,59 @@ const AddItem = () => {
     //                 })
     // }
 
-    //add item to firebase database under user/shopinglist
-    const addToList = (item) =>{
-        firebase
-            .database()
-                .ref('/users/'+userId+'/ShopingList/')
-                    .push(item);
-        }
-
     //retrive items from database
-    const receiveItem = ()=>{
-        firebase
-            .database()
-                .ref('/users/'+userId+'/ShopingList/')
-                    .once('value',function(SnapShot){
-                        SnapShot.forEach(function(childSnapShot){
-                            setItemList([...itemList,childSnapShot]);
-                        })
-                    })
+    // const receiveItem = ()=>{
+    //     firebase
+    //         .database()
+    //             .ref('/users/'+userId+'/ShopingList/')
+    //                 .once('value',function(SnapShot){
+    //                     SnapShot.forEach(function(childSnapShot){
+    //                         setItemList([...itemList,childSnapShot]);
+    //                     })
+    //                 })
+    // }
+
+    const submitHandler = (item) =>{
+        setItemList((prevItemList)=>{
+            return[
+                {text: item,key:Math.random().toString()},
+                ...prevItemList
+            ]
+        })
     }
-    useEffect(()=>{
-        receiveItem();
-    },[])
+
+    const onDeleteItem = (key) =>{
+        setItemList((prevItemList)=>{
+            return prevItemList.filter(itemList=>itemList.key!=key);
+        });
+    }
+
     return(
         <View style={styles.viewStyle}>
             <Text style={styles.headerStyle}>Shopping List</Text>
             <TextInput
-                    placeholder='Add Items To Shopping List'
-                    autoCapitalize='none'
-                    autoCorrect={false}
-                    value={shopitems}
-                    onChangeText={(term)=>setShopItems(term)}
-                    onEndEditing={()=>{
-                        addToList(shopitems)
-                        setShopItems('')
-                    }}
-                    style={styles.textInputStyle}
-                />
+                style={styles.textInputStyle}
+                placeholder='Add Items To Shopping List'
+                autoCapitalize='none'
+                autoCorrect={false}
+                onChangeText={(term)=>setItemName(term)}
+                onEndEditing={()=>{
+                    submitHandler(itemName);
+            }}
+            />
+            <FlatList
+                data={itemList}
+                keyExtractor={(items)=>items.key}
+                renderItem={(items)=>{
+                    return(
+                        <ShopItemList
+                            onDeleteItem={onDeleteItem}
+                            item = {items.item}
+                        />
+                    )
+                }}
+            />
+            
         </View>
     )    
 }
@@ -71,17 +95,8 @@ const AddItem = () => {
 const styles = StyleSheet.create({
     viewStyle:{
         flex:1,
-        marginTop:100
-    },
-    additemviewStyle:{
-        flex:1
-    },
-    addStyle:{
-        marginTop:20,
-        textAlign:'center',
-        fontSize:18,
-        padding:5,
-        color:'#57cc99'
+        paddingTop:100,
+        backgroundColor:'#fff'
     },
     headerStyle:{
         alignSelf:'center',
@@ -94,7 +109,8 @@ const styles = StyleSheet.create({
         marginHorizontal:15,
         borderRadius:10,
         backgroundColor:'#DEDEDE',
-        paddingHorizontal:10
+        paddingHorizontal:10,
+        marginBottom:10
     }
 });
 
