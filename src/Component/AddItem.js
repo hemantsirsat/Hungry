@@ -1,6 +1,6 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 import firebase from 'firebase';
 import ShopItemList from './ShopItemList';
 import { FlatList } from 'react-native-gesture-handler';
@@ -8,44 +8,25 @@ import { FlatList } from 'react-native-gesture-handler';
 const AddItem = () => {
     const [itemName, setItemName] = useState('');
     const [itemList, setItemList] = useState([]);
-    // const userId = firebase.auth().currentUser.uid;
+    const userId = firebase.auth().currentUser.uid;
 
     //add item to firebase database under user/shopinglist
-    // const addToList = (item) =>{
-    //     firebase
-    //         .database()
-    //             .ref('/users/'+userId+'/ShopingList/')
-    //                 .push(item);
-    //     }
+    const addToList = () =>{
+        removeFromList();
+        firebase
+            .database()
+                .ref('/users/'+userId+'/ShopingList')
+                    .push(itemList);
+        console.log(firebase.database().ref('/users/'+userId+'/ShopingList'))
+    }
 
-    // check if already exists
-    // const checkIfAlreadyExists = (item) =>{
-    //     firebase
-    //         .database()
-    //             .ref('/users/'+userId+'/ShopingList/')
-    //                 .once('value',function(snapShot){
-    //                     snapShot.forEach(function(childSnapShot){
-    //                         const itemName = childSnapShot;
-    //                         console.log(itemName)
-    //                         if(itemName  === item){
-    //                             setPresent(true)
-    //                             return;
-    //                         }
-    //                     });
-    //                 })
-    // }
-
-    //retrive items from database
-    // const receiveItem = ()=>{
-    //     firebase
-    //         .database()
-    //             .ref('/users/'+userId+'/ShopingList/')
-    //                 .once('value',function(SnapShot){
-    //                     SnapShot.forEach(function(childSnapShot){
-    //                         setItemList([...itemList,childSnapShot]);
-    //                     })
-    //                 })
-    // }
+    //remove item from firebase database under user/shopinglist
+    const removeFromList = () => {
+        firebase
+            .database()
+                .ref('/users'+userId+'/ShopingList')
+                    .remove()
+    }
 
     const submitHandler = (item) =>{
         setItemList((prevItemList)=>{
@@ -64,6 +45,7 @@ const AddItem = () => {
 
     return(
         <View style={styles.viewStyle}>
+            <StatusBar style='auto' hidden={false}/>
             <Text style={styles.headerStyle}>Shopping List</Text>
             <View style={styles.enterItemStyle}>
                 <TextInput
@@ -75,6 +57,7 @@ const AddItem = () => {
                     onEndEditing={()=>{
                         if(itemName.length!=0){
                             submitHandler(itemName);
+                            // addToList();
                         }
                 }}
                 />
@@ -83,6 +66,7 @@ const AddItem = () => {
                     onPress={()=>{
                         if(itemName.length!=0){
                             submitHandler(itemName);
+                            // addToList();
                         }
                     }}
                 >
@@ -125,7 +109,7 @@ const styles = StyleSheet.create({
         height:40,
         marginHorizontal:15,
         borderRadius:10,
-        backgroundColor:'#DEDEDE',
+        backgroundColor:'#d6e2e9',
         paddingHorizontal:10,
         marginBottom:10,
         width:'70%'

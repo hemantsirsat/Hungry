@@ -35,6 +35,7 @@ const HomeScreen =({ navigation }) =>{
 
     return(
         <View style={styles.viewStyle}>
+            <StatusBar style='dark' hidden={false} backgroundColor='#fff'/>
             <ScrollView
                 style={{backgroundColor:'#fff'}}
                 stickyHeaderIndices={[1]}
@@ -48,7 +49,6 @@ const HomeScreen =({ navigation }) =>{
                     from={0}
                     to={40}
                 />
-                <StatusBar style='dark' backgroundColor='#fff'/>
                 <Text style={styles.cusineStyle}>Cuisine</Text>
                 <FlatList
                     horizontal
