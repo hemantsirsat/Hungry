@@ -65,16 +65,30 @@ const AddItem = () => {
     return(
         <View style={styles.viewStyle}>
             <Text style={styles.headerStyle}>Shopping List</Text>
-            <TextInput
-                style={styles.textInputStyle}
-                placeholder='Add Items To Shopping List'
-                autoCapitalize='none'
-                autoCorrect={false}
-                onChangeText={(term)=>setItemName(term)}
-                onEndEditing={()=>{
-                    submitHandler(itemName);
-            }}
-            />
+            <View style={styles.enterItemStyle}>
+                <TextInput
+                    style={styles.textInputStyle}
+                    placeholder='Add Items To Shopping List'
+                    autoCapitalize='none'
+                    autoCorrect={false}
+                    onChangeText={(term)=>setItemName(term)}
+                    onEndEditing={()=>{
+                        if(itemName.length!=0){
+                            submitHandler(itemName);
+                        }
+                }}
+                />
+                <TouchableOpacity
+                    style={styles.addButtonStyle}
+                    onPress={()=>{
+                        if(itemName.length!=0){
+                            submitHandler(itemName);
+                        }
+                    }}
+                >
+                    <Text style={styles.addTextStyle}>Add</Text>
+                </TouchableOpacity>
+            </View>
             <FlatList
                 data={itemList}
                 keyExtractor={(items)=>items.key}
@@ -104,14 +118,31 @@ const styles = StyleSheet.create({
         fontSize:25,
         fontWeight:'bold'
     },
+    enterItemStyle:{
+        flexDirection:'row',
+    },
     textInputStyle:{
         height:40,
         marginHorizontal:15,
         borderRadius:10,
         backgroundColor:'#DEDEDE',
         paddingHorizontal:10,
-        marginBottom:10
-    }
+        marginBottom:10,
+        width:'70%'
+    },
+    addButtonStyle:{
+        marginLeft:'auto',
+        backgroundColor:'#caf0f8',
+        height:40,
+        borderRadius:10,
+        justifyContent:'center',
+        marginRight:15,
+        width:'17%'
+    },
+    addTextStyle:{
+        alignSelf:'center',
+        color:'#468faf'
+    },
 });
 
 export default AddItem;
