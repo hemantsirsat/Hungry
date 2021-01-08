@@ -1,7 +1,9 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
+import AddRecipe from '../Component/AddRecipe';
 import Emoji from 'react-native-emoji';
+import { Fontisto } from '@expo/vector-icons';
 import firebase from 'firebase';
 
 const About =({navigation}) =>{
@@ -56,7 +58,9 @@ const About =({navigation}) =>{
                     <Text style={styles.signoutTextStyle}>Sign Out</Text>
                 </TouchableOpacity>
             </View>
+            <AddRecipe />
             <View style={styles.favouriteStyle}>
+                <Fontisto name="favorite" size={24} color="black" style={styles.favouriteIconStyle}/>
                 <TouchableOpacity>
                     <Text style={styles.favouriteTextStyle}>Favourites</Text>
                 </TouchableOpacity>
@@ -100,12 +104,20 @@ const styles = StyleSheet.create({
         marginTop:15,
         borderWidth:1,
         borderRadius:5,
-        padding:5,
-        borderColor:'#ced4da'
+        borderColor:'#ced4da',
+        flexDirection:'row',
+    
+    },
+    favouriteIconStyle:{
+        alignSelf:'center',
+        padding:10
     },
     favouriteTextStyle:{
         fontSize:20,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        color:'#219ebc',
+        alignSelf:'center',
+        padding:10
     },
     signoutStyle:{
         marginLeft:'auto',

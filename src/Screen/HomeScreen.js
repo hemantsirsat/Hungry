@@ -35,7 +35,7 @@ const HomeScreen =({ navigation }) =>{
 
     return(
         <View style={styles.viewStyle}>
-            <StatusBar style='dark' hidden={false} backgroundColor='#fff'/>
+            <StatusBar style='dark' hidden={true} backgroundColor='rgba(0,0,0,0.5)'/>
             <ScrollView
                 style={{backgroundColor:'#fff'}}
                 stickyHeaderIndices={[1]}

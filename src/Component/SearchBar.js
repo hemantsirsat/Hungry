@@ -34,7 +34,6 @@ const SearchBar = ({ navigation, api_id, api_key, from, to }) => {
 const styles = StyleSheet.create({
     viewStyle:{
         backgroundColor:'#fff',
-        marginTop:15
     },
     barStyle:{
         flexDirection:'row',
