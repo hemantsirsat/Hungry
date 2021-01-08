@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import Emoji from 'react-native-emoji';
 import firebase from 'firebase';
 
@@ -22,6 +22,21 @@ const About =({navigation}) =>{
         }
 
     }
+
+    const SignOutButtonAlert = () =>
+        Alert.alert(
+            "You no longer will be able to use our services",
+            "Are you sure?",
+            [
+                {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+                },
+                { text: "Sign Out", onPress: () => userSignOut()}
+            ],
+            { cancelable: false }
+    );
     return(
         <View style={styles.viewStyle}>
             <StatusBar style='auto' hidden={true} />
@@ -36,7 +51,7 @@ const About =({navigation}) =>{
                 </View>
                 <TouchableOpacity
                     style={styles.signoutStyle}
-                    onPress={()=>userSignOut()}
+                    onPress={()=>SignOutButtonAlert()}
                 >
                     <Text style={styles.signoutTextStyle}>Sign Out</Text>
                 </TouchableOpacity>
