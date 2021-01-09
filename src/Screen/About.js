@@ -58,7 +58,9 @@ const About =({navigation}) =>{
                     <Text style={styles.signoutTextStyle}>Sign Out</Text>
                 </TouchableOpacity>
             </View>
-            <AddRecipe />
+            <AddRecipe 
+                navigation = {navigation}
+            />
             <View style={styles.favouriteStyle}>
                 <Fontisto name="favorite" size={24} color="black" style={styles.favouriteIconStyle}/>
                 <TouchableOpacity>

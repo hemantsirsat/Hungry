@@ -1,14 +1,16 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
-const AddRecipe = () =>{
+const AddRecipe = ({navigation}) =>{
     return(
         <View style={styles.viewStyle}>
-            <MaterialIcons name="food-bank" size={24} color="#ced4da" style={styles.addIconStyle}/>
+            
             <TouchableOpacity
                 style = {styles.addButtonStyle}
+                onPress={()=>navigation.navigate('MyRecipe')}
             >
+                <Ionicons name="add" size={24} color="#000" style={styles.addIconStyle}/>
                 <Text style={styles.addTextStyle}>Add Your Recipe</Text>
             </TouchableOpacity>
         </View>
@@ -21,13 +23,13 @@ const styles = StyleSheet.create({
         borderWidth:1,
         borderRadius:5,
         borderColor:'#ced4da',
-        flexDirection:'row'
     },
     addButtonStyle:{
+        flexDirection:'row',
         padding:10,
     },
     addIconStyle:{
-        padding:10
+        paddingRight:10
     },
     addTextStyle:{
         fontSize:20,
