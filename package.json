@@ -42,7 +42,8 @@
     "react-native-sticky-parallax-header": "^0.4.0",
     "react-native-vector-icons": "^6.0.0",
     "react-native-web": "~0.13.12",
-    "react-native-webview": "^11.0.2"
+    "react-native-webview": "^11.0.2",
+    "expo-image-picker": "~9.2.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"
