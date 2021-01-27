@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as GoogleSignIn from 'expo-google-app-auth';
 import firebase from 'firebase';
@@ -112,12 +112,31 @@ class SignInScreen extends Component {
                 <View style={{alignItems:'center'}}>
                     <Text style={styles.titleStyle}>Hungry</Text>
                 </View>
+                <View>
+                    <TextInput
+                        style={styles.textInputStyle}
+                        placeholder='Email Address'
+                    />
+                    <TextInput
+                        style={styles.textInputStyle}
+                        placeholder='Password'
+                        secureTextEntry={true}
+                    />
+                    <TouchableOpacity
+                //    onPress={()=> this.signInWithGoogleAsync()}
+                   style={styles.buttonStyle}
+                >   
+                    <View style={styles.buttonTextStyle}>
+                        <Text style={styles.textStyle}>Sign In</Text>
+                    </View>
+                </TouchableOpacity>
+                </View>
                 <TouchableOpacity
                    onPress={()=> this.signInWithGoogleAsync()}
                    style={styles.buttonStyle}
                 >   
                     <View style={styles.buttonTextStyle}>
-                        <AntDesign name="google" size={20} color="#fff" />
+                        <AntDesign name="google" size={20} color="#4285F4" />
                         <Text style={styles.textStyle}>Sign In Using Google</Text>
                     </View>
                 </TouchableOpacity>
@@ -138,13 +157,21 @@ const styles = StyleSheet.create({
         alignSelf:'center'
     },
     buttonStyle:{
-        marginVertical:15,
+        marginTop:10,
         marginHorizontal:25,
-        backgroundColor:'#4285F4',
+        backgroundColor:'#e2eafc',
         height:45,
         borderRadius:10,
         justifyContent:'center'
     },
+    textInputStyle:{
+        marginHorizontal:25,
+        marginVertical:5,
+        backgroundColor:'#f0efeb',
+        padding:5,
+        paddingHorizontal:10,
+        borderRadius:10
+    },  
     buttonTextStyle:{
         flexDirection:'row',
         alignItems:'center',
@@ -153,7 +180,7 @@ const styles = StyleSheet.create({
     textStyle:{
         alignSelf:'center',
         fontSize:20,
-        color:'#fff',
+        color:'#778da9',
         paddingLeft:10,
     },
     titleStyle:{
