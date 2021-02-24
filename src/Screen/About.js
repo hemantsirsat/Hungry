@@ -45,10 +45,10 @@ const About =({navigation}) =>{
             <LinearGradient
                         // Background Linear Gradient
                         start={{x: 0.3, y: 0.25}} end={{x: 0.9, y: 1.0}}
-                        colors={['#007ea7','#b8f3ff','#fff']}
+                        colors={['#00b2ca','#b8f3ff','#fff']}
                         style={styles.linearBackground}
             />
-            <StatusBar style='auto' hidden={true} />
+            <StatusBar style='dark'/>
             <View style={styles.detailStyle}>
                 <Image 
                     source={{uri:userProfilePicture}}

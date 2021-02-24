@@ -41,7 +41,7 @@ function TabNavigation () {
           component={About} 
           options={{
             tabBarLabel: 'Profile',
-            tabBarColor:"#9eb3c2",
+            tabBarColor:"#00b2ca",
             tabBarIcon: ({ color }) => (
               <Feather name="info" size={24} color={color} />
             )
