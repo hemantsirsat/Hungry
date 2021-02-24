@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import InputFromUser from '../Component/InputFromUser';
+import { TextField } from 'react-native-material-ui';
 
 const MyRecipe = () => {
     const [imageUpload, setImageUpload] = useState('Upload Image');
@@ -36,6 +37,7 @@ const MyRecipe = () => {
                 <InputFromUser 
                     placeHolder = 'Recipe Name'
                 />
+
                 <TouchableOpacity
                     onPress={()=>pickImage()}
                     style={styles.uploadImageStyle}

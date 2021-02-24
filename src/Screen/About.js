@@ -1,9 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
-import Emoji from 'react-native-emoji';
 import { Ionicons } from '@expo/vector-icons';
-import { Fontisto } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import firebase from 'firebase';
 
@@ -69,15 +67,14 @@ const About =({navigation}) =>{
                         <Text style={styles.twoButtonTextStyle}>Add Recipe</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.twoButtonStyle}>
+                {/* <View style={styles.twoButtonStyle}>
                     <TouchableOpacity
                         style={styles.addButtonStyle}
                     >
                         <Fontisto name="favorite" size={20} color="#000" style={styles.twoButtonIconStyle}/>
                         <Text style={styles.twoButtonTextStyle}>Favourites</Text>
                     </TouchableOpacity>
-                </View>
-
+                </View> */}
             </View>
             <TouchableOpacity
                     style={styles.signoutStyle}
@@ -85,6 +82,12 @@ const About =({navigation}) =>{
                 >
                     <Text style={styles.signoutTextStyle}>Sign Out</Text>
             </TouchableOpacity>
+
+            <View style={styles.seperatorStyle}>
+                <View style={styles.line1Style} />
+                <Text style={styles.favouriteTextStyle}>Favourites</Text>
+                <View style={styles.line2Style} />
+            </View>
             {/* <Text style={styles.thankStyle}>Made with <Emoji name="heart" style={{fontSize: 8}} />  using React-Native/Expo</Text> */}
         </View>
     );
@@ -138,7 +141,7 @@ const styles = StyleSheet.create({
         borderRadius:5,
         borderColor:'#ced4da',
         marginRight:10,
-        width:'50%'
+        width:'100%'
     },
     addButtonStyle:{
         flexDirection:'row',
@@ -150,6 +153,34 @@ const styles = StyleSheet.create({
     twoButtonTextStyle:{
         fontSize:20,
         color:'#219ebc',
+        fontWeight:'bold'
+    },
+    seperatorStyle:{
+        marginVertical:15,
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    line1Style:{
+        borderColor:'black',
+        borderWidth:1,
+        height:1,
+        flex:1,
+        marginLeft:10,
+        borderColor:'#42bfdd'
+    },
+    line2Style:{
+        borderColor:'black',
+        borderWidth:1,
+        height:1,
+        flex:1,
+        marginRight:10,
+        borderColor:'#42bfdd'
+    },
+    favouriteTextStyle:{
+        marginHorizontal:5,
+        fontSize:20,
+        color:'#42bfdd',
         fontWeight:'bold'
     },
     signoutStyle:{

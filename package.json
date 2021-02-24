@@ -21,6 +21,7 @@
     "expo-font": "~8.4.0",
     "expo-google-app-auth": "^8.1.4",
     "expo-google-sign-in": "~8.4.0",
+    "expo-image-picker": "~9.2.0",
     "expo-status-bar": "~1.0.3",
     "firebase": "^8.2.1",
     "lottie-react-native": "^3.5.0",
@@ -32,6 +33,7 @@
     "react-native-gesture-handler": "~1.8.0",
     "react-native-image-header-scroll-view": "^1.0.0",
     "react-native-linear-gradient": "^2.5.6",
+    "react-native-material-ui": "^1.30.1",
     "react-native-paper": "^4.5.0",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
@@ -42,8 +44,7 @@
     "react-native-sticky-parallax-header": "^0.4.0",
     "react-native-vector-icons": "^6.0.0",
     "react-native-web": "~0.13.12",
-    "react-native-webview": "^11.0.2",
-    "expo-image-picker": "~9.2.0"
+    "react-native-webview": "^11.0.2"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"

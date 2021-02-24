@@ -35,7 +35,7 @@ const HomeScreen =({ navigation }) =>{
     ]
 
     const user = firebase.auth().currentUser;
-    const userName = user.displayName;
+    var userName = user.displayName;
 
     return(
         <View style={styles.viewStyle}>
@@ -46,7 +46,7 @@ const HomeScreen =({ navigation }) =>{
                 showsVerticalScrollIndicator={false}
             >
                 <View style={styles.greetingStyle}>
-                    <Text style={styles.hiStyle}>Hi, {userName}</Text>
+                    <Text style={styles.hiStyle} numberOfLines={1}>Hi, {userName}</Text>
                     <Text style={styles.cravingStyle}>What Are You Craving?</Text>
                 </View>
                 <SearchBar 
@@ -114,13 +114,13 @@ const styles = StyleSheet.create({
         height:100
     },
     hiStyle:{
-        fontSize:28,
+        fontSize:20,
         marginTop:80,
         marginHorizontal:15,
         fontWeight:'bold'
     },
     cravingStyle:{
-        fontSize:18,
+        fontSize:22,
         marginBottom:5,
         marginHorizontal:15,
         fontWeight:'bold'
