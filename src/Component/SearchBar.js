@@ -34,13 +34,16 @@ const SearchBar = ({ navigation, api_id, api_key, from, to }) => {
 const styles = StyleSheet.create({
     viewStyle:{
         backgroundColor:'#fff',
+        justifyContent:'center',
     },
     barStyle:{
+        top:-30,
         flexDirection:'row',
         backgroundColor:'#dee2e6',
+        marginTop:10,
         marginHorizontal:15,
         borderRadius:10,
-        marginVertical:15,
+        elevation:3
     },
     iconStyle:{
         padding:10,
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
     searchBarStyle:{
         marginRight:10,
         flex:1,
-        fontSize:15
+        fontSize:15,
     }
 });
 

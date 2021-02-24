@@ -44,11 +44,10 @@ const About =({navigation}) =>{
         <View style={styles.viewStyle}>
             <LinearGradient
                         // Background Linear Gradient
-                        start={{x: 0.3, y: 0.25}} end={{x: 0.9, y: 1.0}}
-                        colors={['#00b2ca','#b8f3ff','#fff']}
+                        colors={['#00b2ca','#fff']}
                         style={styles.linearBackground}
             />
-            <StatusBar style='dark'/>
+            <StatusBar style='dark' hidden={true}/>
             <View style={styles.detailStyle}>
                 <Image 
                     source={{uri:userProfilePicture}}
@@ -158,13 +157,13 @@ const styles = StyleSheet.create({
         position:'absolute',
         backgroundColor:'#000',
         width:'100%',
-        height:30,
+        height:40,
         alignItems:'center',
         justifyContent:'center'
     },
     signoutTextStyle:{
         color:'#fff',
-        fontSize:15,
+        fontSize:20,
         fontWeight:'bold'
     },
 });

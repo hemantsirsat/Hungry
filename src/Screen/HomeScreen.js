@@ -6,6 +6,7 @@ import Cusine from '../Component/Cusine';
 import Categories from '../Component/Categories';
 import ApiKeys from '../ApiKeys/ApiKeys';
 import { ScrollView } from 'react-native-gesture-handler';
+import firebase from 'firebase';
 
 const HomeScreen =({ navigation }) =>{
     const [key1, id1, key2, id2, key3, id3, key4, id4] = ApiKeys();
@@ -33,15 +34,21 @@ const HomeScreen =({ navigation }) =>{
         {id:'Md',Cusinename:'Mediterranean',ImageURL:'https://www.qsrmagazine.com/sites/default/files/styles/story_page/public/story/more-diet.jpg?itok=y9x4cqn-',api_id:id4,api_key:key4,from:0,to:30}
     ]
 
+    const user = firebase.auth().currentUser;
+    const userName = user.displayName;
+
     return(
         <View style={styles.viewStyle}>
             <StatusBar style='dark' hidden={true} backgroundColor='rgba(0,0,0,0.5)'/>
             <ScrollView
                 style={{backgroundColor:'#fff'}}
-                stickyHeaderIndices={[1]}
+                // stickyHeaderIndices={[1]}
                 showsVerticalScrollIndicator={false}
             >
-                <Text style={styles.cravingStyle}>What Are You Craving?</Text>
+                <View style={styles.greetingStyle}>
+                    <Text style={styles.hiStyle}>Hi, {userName}</Text>
+                    <Text style={styles.cravingStyle}>What Are You Craving?</Text>
+                </View>
                 <SearchBar 
                     navigation={navigation}
                     api_id={id3}
@@ -97,9 +104,24 @@ const styles = StyleSheet.create({
     viewStyle:{
         backgroundColor:'#fff'
     },
+    greetingStyle:{
+        backgroundColor:'#a9d6e5',
+        height:170,
+        borderBottomLeftRadius:30,
+        borderBottomRightRadius:30
+    },
+    linearBackground:{
+        height:100
+    },
+    hiStyle:{
+        fontSize:28,
+        marginTop:80,
+        marginHorizontal:15,
+        fontWeight:'bold'
+    },
     cravingStyle:{
-        fontSize:24,
-        marginTop:40,
+        fontSize:18,
+        marginBottom:5,
         marginHorizontal:15,
         fontWeight:'bold'
     },
