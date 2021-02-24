@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image, StyleSheet, FlatList, ScrollView, TouchableOpacity, Share } from 'react-native';
 import { MaterialIcons, Entypo } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import firebase from 'firebase';
 
 const RecipeDetails = ({ route, navigation }) => {
@@ -69,7 +70,7 @@ const RecipeDetails = ({ route, navigation }) => {
 
     return(
         <View style={{flex:1, backgroundColor:"#fff"}}>
-            <StatusBar style='light' hidden={true} backgroundColor='rgba(0,0,0,0.5)'/>
+            <StatusBar style='light' backgroundColor='rgba(0,0,0,0.5)'/>
             <ScrollView 
                 showsVerticalScrollIndicator={false}
             >

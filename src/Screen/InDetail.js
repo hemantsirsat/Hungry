@@ -11,10 +11,6 @@ const InDetail = ({ route }) => {
     );
 };
 
-const styles = StyleSheet.create({
-    webviewStyle:{
-        marginTop:25
-    }
-});
+const styles = StyleSheet.create({});
 
 export default InDetail;

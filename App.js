@@ -8,7 +8,7 @@ import firebase from 'firebase';
 import { firebaseConfig } from './src/Keys/Config';
 
 firebase.initializeApp(firebaseConfig);
-const Stack = createStackNavigator();
+  const Stack = createStackNavigator();
 
 export default function App() {
   return (
