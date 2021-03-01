@@ -132,10 +132,7 @@ export default class RecipeDetails extends React.Component{
                     <View style={styles.contentStyle}>
                         <View style={styles.nameandfavStyle}>
                             <Text style={styles.labelStyle}>{recipeName}</Text>
-
-
-
-
+                            {/* Favourite Button */}
                             <TouchableOpacity
                                 onPress={()=>{
                                     if(this.state.Favourite=='False'){
@@ -157,10 +154,6 @@ export default class RecipeDetails extends React.Component{
                             >
                                 <Entypo name="heart" size={24} color={this.state.iconColor} />
                             </TouchableOpacity>
-
-
-
-
                         </View>
                         <View style={styles.inshortStyle}>
                             <Text style={styles.innerinshortStyle}>
