@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, InputFromUser } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import BottomSheet from 'reanimated-bottom-sheet';
 import firebase from 'firebase';
 
 const About =({navigation}) =>{
@@ -38,6 +39,52 @@ const About =({navigation}) =>{
             ],
             { cancelable: false }
     );
+
+    const [imageUpload, setImageUpload] = useState('Upload Image');
+    
+    //Ask for permission and select image from local storage
+    const pickImage = async () => {
+        (async () => {
+            if (Platform.OS !== 'web') {
+              const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+              if (status !== 'granted') {
+                alert('Sorry, we need camera roll permissions to make this work!');
+              }
+            }
+          })();  
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          allowsEditing: true,
+          aspect: [4, 6],
+          quality: 1,
+        });
+        
+        if (!result.cancelled) {
+          setImageUpload(result.uri);
+        }
+    };
+
+    const renderContent = () => (
+                <View style={styles.formStyles}>
+                    <InputFromUser 
+                        placeHolder = 'Recipe Name'
+                    />
+                    {/* <TouchableOpacity
+                        onPress={()=>pickImage()}
+                        style={styles.uploadImageStyle}
+                    >
+                        <View style={styles.uploadDetailsStyle}>
+                            <Text numberOfLines={1}>{imageUpload}</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <InputFromUser
+                        placeHolder= 'Description'
+                    />  */}
+                </View>
+    );
+
+    const sheetRef = React.useRef(null);
+
     return(
         <View style={styles.viewStyle}>
             <LinearGradient
@@ -61,7 +108,7 @@ const About =({navigation}) =>{
                 <View style={styles.twoButtonStyle}>
                     <TouchableOpacity
                         style = {styles.addButtonStyle}
-                        onPress={()=>navigation.navigate('MyRecipe')}
+                        onPress={() => sheetRef.current.snapTo(0)}
                     >
                         <Ionicons name="add" size={20} color="#000" style={styles.twoButtonIconStyle}/>
                         <Text style={styles.twoButtonTextStyle}>Add Recipe</Text>
@@ -89,6 +136,12 @@ const About =({navigation}) =>{
                 <View style={styles.line2Style} />
             </View>
             {/* <Text style={styles.thankStyle}>Made with <Emoji name="heart" style={{fontSize: 8}} />  using React-Native/Expo</Text> */}
+            {/* <BottomSheet
+                ref={sheetRef}
+                snapPoints={[450, 300, 0]}
+                borderRadius={30}
+                renderContent={renderContent}
+        /> */}
         </View>
     );
 };
@@ -196,6 +249,10 @@ const styles = StyleSheet.create({
         color:'#fff',
         fontSize:20,
         fontWeight:'bold'
+    },
+    formStyles:{
+        backgroundColor:'#DEDEDE',
+        height:'100%'
     },
 });
 

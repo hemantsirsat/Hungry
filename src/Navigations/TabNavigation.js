@@ -5,6 +5,7 @@ import About from '../Screen/About';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Ionicons, Feather } from '@expo/vector-icons';
 import HomeScreenNavigation from './StackNavigation';
+import AboutScreenNavigation from './AboutScreenNavigation';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -38,7 +39,7 @@ function TabNavigation () {
         />
         <Tab.Screen 
           name="About" 
-          component={About} 
+          component={AboutScreenNavigation} 
           options={{
             tabBarLabel: 'Profile',
             tabBarColor:"#00b2ca",

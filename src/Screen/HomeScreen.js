@@ -35,7 +35,7 @@ const HomeScreen =({ navigation }) =>{
     ]
 
     const user = firebase.auth().currentUser;
-    var userName = user.displayName;
+    var userName = user.displayName
 
     return(
         <View style={styles.viewStyle}>
