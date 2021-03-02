@@ -10,24 +10,40 @@ export default class About extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            navigation:this.props.navigation
+            navigation:this.props.navigation,
+            favourites:''
         }
     }
     
     async checkifExists(){
-        await firebase.database()
+        return await firebase.database()
                         .ref('Favourites/'+firebase.auth().currentUser.uid)
                             .once('value')
-                                .then(function(snapshot) {
-                                    snapshot.forEach(function(childSnapshot) {
-                                        var url = childSnapshot.child('URL').val();
-                                        console.log(url)
-                                    })
-                                })
+                                // .then(function(snapshot) {
+                                //     snapshot.forEach(function(childSnapshot) {
+                                //         var url = childSnapshot.child('Recipe_Image').val();
+                                //         // console.log(url)
+                                //         var images = [...images,url]
+                                //     })
+                                // })
     }
 
-    componentDidMount(){
-        this.checkifExists()
+    async componentDidMount(){
+        var favourite = await firebase.database()
+                        .ref('Favourites/'+firebase.auth().currentUser.uid)
+                            .once('value')
+                                // .then(function(snapshot) {
+                                //     snapshot.forEach(function(childSnapshot) {
+                                //         var url = childSnapshot.child('Recipe_Image').val();
+                                //         // console.log(url)
+                                //         this.setState({
+                                //             images:[...this.state.images,url]
+                                //         })
+                                //     })
+                                // })
+        this.setState({
+            favourites:favourite
+        })
     }
     render(){
         const user = firebase.auth().currentUser;

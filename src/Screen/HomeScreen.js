@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, FlatList, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import SearchBar from '../Component/SearchBar';
@@ -9,6 +9,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import firebase from 'firebase';
 
 const HomeScreen =({ navigation }) =>{
+    // const [name, setName] = useState()
     const [key1, id1, key2, id2, key3, id3, key4, id4] = ApiKeys();
     const types = [
         {id:'Quick',unique:1, api_id:id1,api_key:key1,from:0,to:15},
@@ -34,9 +35,17 @@ const HomeScreen =({ navigation }) =>{
         {id:'Md',Cusinename:'Mediterranean',ImageURL:'https://www.qsrmagazine.com/sites/default/files/styles/story_page/public/story/more-diet.jpg?itok=y9x4cqn-',api_id:id4,api_key:key4,from:0,to:30}
     ]
 
-    const user = firebase.auth().currentUser;
-    var userName = user.displayName
-
+    const user = firebase.auth().currentUser.uid;
+    const getName = async()=>{
+        const firstName = await firebase.database().ref('users/'+user+'/first_name').once('value')
+        // console.log(firstName)
+        setName(firstName)
+    }
+    // useEffect(()=>{
+    //    getName()
+    //    console.log(name)
+    // },[])
+    
     return(
         <View style={styles.viewStyle}>
             <StatusBar style='dark' hidden={true} backgroundColor='rgba(0,0,0,0.5)'/>
@@ -46,7 +55,7 @@ const HomeScreen =({ navigation }) =>{
                 showsVerticalScrollIndicator={false}
             >
                 <View style={styles.greetingStyle}>
-                    <Text style={styles.hiStyle} numberOfLines={1}>Hi, {userName}</Text>
+                    <Text style={styles.hiStyle} numberOfLines={1}>Hi</Text>
                     <Text style={styles.cravingStyle}>What Are You Craving?</Text>
                 </View>
                 <SearchBar 

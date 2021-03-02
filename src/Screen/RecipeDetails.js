@@ -140,7 +140,7 @@ export default class RecipeDetails extends React.Component{
                                             Favourite:'True',
                                             iconColor:'#d40429'
                                         });
-                                        firebase.database().ref('Favourites/'+userID).push({'URL':recipeDetailsUrl,'Name':recipeName})
+                                        firebase.database().ref('Favourites/'+userID).push({'URL':recipeDetailsUrl,'Name':recipeName,'Recipe_Image':imageURL})
                                     }
                                     else{
                                         this.setState({
