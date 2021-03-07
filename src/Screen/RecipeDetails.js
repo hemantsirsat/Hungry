@@ -18,6 +18,8 @@ export default class RecipeDetails extends React.Component{
         }
     }
 
+    
+
     async defaultStore(){
         try {
           await AsyncStorage.setItem('status', '0') //Not in Favourites(0:- not fav, 1:- Fav)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, InputFromUser } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -15,35 +15,22 @@ export default class About extends React.Component{
         }
     }
     
-    async checkifExists(){
-        return await firebase.database()
+    async getFavourites(){
+        await firebase.database()
                         .ref('Favourites/'+firebase.auth().currentUser.uid)
-                            .once('value')
+                            .once('value').then(function(snapshot){return snapshot})
                                 // .then(function(snapshot) {
-                                //     snapshot.forEach(function(childSnapshot) {
-                                //         var url = childSnapshot.child('Recipe_Image').val();
-                                //         // console.log(url)
-                                //         var images = [...images,url]
-                                //     })
+                                    // snapshot.forEach(function(childSnapshot) {
+                                    //     var url = childSnapshot.child('Recipe_Image').val();
+                                    //     console.log(url)
+                                    // })
                                 // })
     }
 
     async componentDidMount(){
-        var favourite = await firebase.database()
-                        .ref('Favourites/'+firebase.auth().currentUser.uid)
-                            .once('value')
-                                // .then(function(snapshot) {
-                                //     snapshot.forEach(function(childSnapshot) {
-                                //         var url = childSnapshot.child('Recipe_Image').val();
-                                //         // console.log(url)
-                                //         this.setState({
-                                //             images:[...this.state.images,url]
-                                //         })
-                                //     })
-                                // })
-        this.setState({
-            favourites:favourite
-        })
+        var Favourites = await this.getFavourites()
+        console.log(Favourites)
+ 
     }
     render(){
         const user = firebase.auth().currentUser;
@@ -57,7 +44,6 @@ export default class About extends React.Component{
                     this.navigation.replace('Loading')
                 }
             catch(err){
-                console.log(err)
                 alert('Sign Out Failed! Try Again')
             }
 
@@ -70,7 +56,6 @@ export default class About extends React.Component{
                 [
                     {
                     text: "Cancel",
-                    onPress: () => console.log("Cancel Pressed"),
                     style: "cancel"
                     },
                     { text: "Sign Out", onPress: () => userSignOut()}
@@ -146,7 +131,7 @@ export default class About extends React.Component{
                     <View style={styles.twoButtonStyle}>
                         <TouchableOpacity
                             style = {styles.addButtonStyle}
-                            onPress={() => sheetRef.current.snapTo(0)}
+                            onPress={() => this.state.navigation.navigate('MyRecipe')}
                         >
                             <Ionicons name="add" size={20} color="#000" style={styles.twoButtonIconStyle}/>
                             <Text style={styles.twoButtonTextStyle}>Add Recipe</Text>
@@ -172,6 +157,9 @@ export default class About extends React.Component{
                     <View style={styles.line1Style} />
                     <Text style={styles.favouriteTextStyle}>Favourites</Text>
                     <View style={styles.line2Style} />
+                </View>
+                <View style={styles.favouriteList}>
+                    <Text style={{alignSelf:'center', fontWeight:'bold', fontStyle:'italic', fontSize:17}}>Feature Comming Soon</Text>
                 </View>
                 {/* <Text style={styles.thankStyle}>Made with <Emoji name="heart" style={{fontSize: 8}} />  using React-Native/Expo</Text> */}
                 {/* <BottomSheet

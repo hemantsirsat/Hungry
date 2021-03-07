@@ -48,7 +48,8 @@
     "react-native-vector-icons": "^6.0.0",
     "react-native-web": "~0.13.12",
     "react-native-webview": "^11.0.2",
-    "reanimated-bottom-sheet": "^1.0.0-alpha.22"
+    "reanimated-bottom-sheet": "^1.0.0-alpha.22",
+    "expo-sqlite": "~8.5.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"
